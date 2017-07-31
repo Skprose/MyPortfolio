@@ -4,105 +4,54 @@
   width:100%;
   background: rgb(238,238,238);
 }
-.top {
-  position: fixed;
-  border-bottom: : 5px solid rgba(205, 219, 216, 1);
-  background:rgba(225, 234, 232, 1);
-  width:100%;
-  margin-bottom:50px;
-  top:0;
-}
+
 .name {
   background-color: rgb(26, 225, 225);
-  margin-left: 50px;
   padding:20px;
   color:  white;
   font-family: 'Merienda One', cursive;
-  font-size: 20px;
-  position: absolute;
-  bottom: -10px;
-  left:20px;
-}
-.topright {
-  margin-right:25px;
-}
-.nav{
-  float: right;
-  margin:25px;
-  font-family: 'Libre Baskerville', serif;
   font-size: 25px;
 }
-.nav a {
-  text-decoration: none;
-  color:hsla(169, 16%, 25%, 1);
-  padding:15px;
-  border-right: 1px solid hsla(169, 16%, 69%, 1);
-}
 
-.clearfix::after {
-  content:"";
-  display: table;
-  clear: both;
+.mymenu {
+  font-size: 20px;
+  font-family: 'Libre Baskerville', serif;
+  padding: 15px;
 }
-#jumbotron {
-  clear : both;
-  min-height: 100%;
-  width: 100%;
-  margin-left: 50px;
-  margin-top:60px;
-  margin-bottom: 20px;
-  position: relative;
-}
-
 .about {
-width:60%;
-clear:both;
-line-height: 20px;
-background-color: #ffffff;
-float:left;
-font-family: 'Bree Serif', serif;
-font-size: 18px;
-line-height: 1.5;
-}
-.class h2{
-  width:100%;
-  font-size: 30px;
-  padding:20px;
-  margin:20px;
-  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
-}
-.img {
-  float: left;
+  width:50vw;
 }
 .sidebar {
-  float:left;
+  width:40vw;
+}
+#mainbox{
+   margin-top: 50px;
+   padding-top: 50px;
+}
+.connecth2 {
+  font-size: 30px;
   margin:20px;
-  width:20px;
-  width:30%;
+  padding:20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
 }
-.img {
+.aboutmeh2{
+  width:80%;
+  font-size: 30px;
+  padding:20px;
   margin: 20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
 }
-
-
-
-{
-
-
-font-family: 'Asap', sans-serif;
-
-}
-
-footer {
-  width: 100%;
-  height:80px;
+#fid {
   background: rgb(102,102,102);
   text-align: center;
-  position:fixed;
-  bottom:0;
+  margin-top: 60px;
 }
-.footer {
-  font-size: 16px;
+#footer {
+  font-size: 18px;
   font-family: 'Rasa', serif;
   padding:20px;
+  color: white;
+  z-index: 1;
 }

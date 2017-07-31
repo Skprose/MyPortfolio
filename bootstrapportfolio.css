@@ -1,0 +1,122 @@
+body {
+ width:100%;
+ background: rgb(238,238,238);
+}
+
+.name {
+ background-color: rgb(26, 225, 225);
+ padding:20px;
+ color:  white;
+ font-family: 'Merienda One', cursive;
+ font-size: 25px;
+}
+
+.mymenu {
+ font-size: 20px;
+ font-family: 'Libre Baskerville', serif;
+ padding: 15px;
+}
+
+#left1 {
+ background-image: url(./Assets/IMG_0265.JPG);
+ width:100%;
+ height:200px;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding:20px;
+ }
+#right1 {
+ background-image:url(./Assets/IMG_0216.JPG);
+ width:100%;
+ height:200px;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding:20px;
+}
+#left2 {
+ background-image: url(./Assets/summer2017.JPG);
+ width:100%;
+ height:150px;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding:20px;
+ }
+#right2 {
+ background-image: url(./Assets/IMG_0448.JPG);
+ width:100%;
+ height:150px;;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding:20px;
+ }
+#left3 {
+ background-image: url(./Assets/IMG_0387.JPG);
+ width:100%;
+ height:150px;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding:20px;
+ }
+#right3 {
+ background-image:  url(./Assets/skywalk.JPG);
+ width:100%;
+ height:150px;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ padding:20px;
+ }
+ .txt {
+   width: 80%;
+   background-color: #4aaaa5;
+   color: white;
+   font-size: 16px;
+   position: absolute;
+   margin-right: 10px;
+   padding:10px;
+   bottom: 20px;
+ }
+#mainbox{
+   margin-top: 50px;
+   padding-top: 50px;
+}
+.connecth2 {
+  font-size: 30px;
+  margin:20px;
+  padding:20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
+}
+.portfolioh2{
+  width:80%;
+  font-size: 30px;
+  padding:20px;
+  margin: 20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
+}
+.pic {
+  width:100%;
+}
+.img {
+  width:90%;
+  padding:10px;
+  align-content: stretch;
+}
+#fid {
+  background: rgb(102,102,102);
+  text-align: center;
+  margin-top: 60px;
+}
+#footer {
+  font-size: 18px;
+  font-family: 'Rasa', serif;
+  padding:20px;
+  color: white;
+  z-index: 1;
+}

@@ -3,51 +3,92 @@
   <head>
     <meta charset="utf-8">
     <title>Basic Portfolio</title>
-    <link href = "portfoliostyle.css" type ="text/css" rel = "stylesheet" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Asap|Bree+Serif|Libre+Baskerville|Merienda+One|Rasa" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href = "bootstrapportfolio.css" type ="text/css" rel = "stylesheet" >
 
-    <link href="https://fonts.googleapis.com/css?family=Asap|Bree+Serif|Libre+Baskerville|Merienda+One|Rasa" rel="stylesheet">
-  </head>
-  <body>
-    <header class = "top">
-      <h3 class = "name">Sangeetha Kaliaperumal</h3>
-      <nav class = "topright" class= "clearfix">
-         <h6 class = 'nav'><a href = "index.html">About Me</a></h6>
-         <h6 class = 'nav'><a href = "portfolio.html">Portfolio</a></h6>
-         <h6 class = 'nav'><a href = "contact.html">Contact</a></h6>
-      </nav>
-    </header>
-    <div class = "clear"><br /><br /></div>
-  <div id = "jumbotron">
-      <div class =  "portfolio">
-          <h2 class = "portfolioh2">Portfolio</h2>
+</head>
+<body>
+  <nav class ="navbar navbar-default navbar-fixed-top">
+     <div class = "container-fluid">
+       <div class = "navbar-header">
+          <h3 class = "name">Sangeetha Kaliaperumal</h3>
+      </div>
+      <button  type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#mynavbar">
+          <span class ="icon-bar"></span>
+          <span class = "icon-bar"></span>
+          <span class = "icon-bar"></span>
+      </button>
+      <div class = "collapse navbar-collapse" id ="mynavbar">
+       <ul class = "nav navbar-nav navbar-right" >
+        <li class = "mymenu"><a href = "bootstrap-aboutme.html">About Me</a></li>
+         <li class = "mymenu"><a href = "Bootstrap-portfolio.html">Portfolio</a></li>
+         <li class = "mymenu"><a href = "boottsrap-contact.html">Contact</a></li>
+       </ul>
+      <div>
+    </div>
+  </nav>
 
-          <table class = "gallery">
-                 <tr>
-                   <th><div class = "img" id = "left1"><p class = "txt">Summer 2017</p></div></th>
-
-                    <th><div class = "img" id = "right1"><p class = "txt">Mountains</p></div></th>
-                  </tr>
-                  <tr>
-                    <th><div class = "img" id = "left2"><p class = "txt">Geyser</p></div></th>
-                    <th><div class = "img" id = "right2"><p class = "txt">Falls &amp; Hike</p></div></th>
-                  </tr>
-                  <tr>
-                    <th><div class = "img" id = "left3"><p class = "txt">Cabin</p></div></th>
-                    <th><div class ="img" id = "right3"><p class = "txt">Sky Walk</p></div></th>
-                  </tr>
+  <div class = "container" id= "mainbox">
+  <div class ="row">
+     <div class = "col-lg-8">
+          <div class = "row">
+                 <div class = "col-md-12">
+                    <div><h2 class = "portfolioh2">Portfolio</h2></div>
+                </div>
+          </div>
+          <div class ="row">
+               <div class ="col-md-6">
+                   <div class = "thumbnail" id = "left1" ><p class = "txt">Summer 2017</p></div>
+               </div>
+                <div class = "col-md-6">
+                  <div class = "thumbnail" id = "right1" ><p class = "txt">Mountains</p></div>
+                </div>
+          </div>
+          <div class ="row">
+               <div class ="col-md-6">
+                   <div class = "thumbnail" id = "left2"><p class = "txt">Summer 2017</p></div>
+               </div>
+                <div class = "col-md-6">
+                     <div class = "thumbnail" id = "right2"><p class = "txt">Mountains</p></div>
+                </div>
+          </div>
+          <div class ="row">
+               <div class ="col-md-6">
+                     <div class = "thumbnail" id = "left3"><p class = "txt">Summer 2017</p></div>
+               </div>
+                <div class = "col-md-6">
+                    <div class = "thumbnail" id = "right3"><p class = "txt">Mountains</p></div>
+                </div>
           </div>
       </div>
+     <div class = "col-lg-4">
+         <div class = "row">
+              <div class = "col-md-12">
+                 <div><h2 class = "connecth2">Connect with Me</h2></div>
+             </div>
+         </div>
+           <div class = "row">
+           <div class = "col-xs-4">
+                <a class = "icons" href = "https://github.com/Skprose" target = "_blank"><img src ="./Assets/if_29_939731.png" height = 65px width = 73px /></a>
+          </div>
+          <div class = "col-xs-4">
+               <a class = "icons" href = "https://www.linkedin.com/in/sangeetha-kaliaperumal/" target = "_blank"><img src = "./Assets/if_square-linkedin_317725.png"  width = 73px height = 65px /></a>
+          </div>
+          <div class = "col-xs-4">
+              <a class = "icons" href = "https://stackexchange.com/users/11394647/sangeetha-kaliaperumal" target = "_blank"><img src = "./Assets/if_Stack_Overflow_1298710.png" width = 65px height = 73px /></a>
+          </div>
+         </div>
+     </div>
+  </div> <!-- End main row -->
+</div> <!--End container class -->
+<div id = "fid" class = "panel panel-default">
+     <div class = "panel-body" id = "footer"> &#169; Copyright 2017 Sangeetha </div>
+</div>
 
-       <div class = "sidebar" >
-        <h2 class = "connecth2">Connect with Me</h2>
-        <a class = "icons" href = "https://github.com/Skprose" target = "_blank"><img src ="./Assets/if_29_939731.png" height = 65px width = 73px /></a>
-        <a class = "icons" href = "https://www.linkedin.com/in/sangeetha-kaliaperumal/" target = "_blank"><img src = "./Assets/if_square-linkedin_317725.png"  width = 73px height = 65px /></a>
-        <a class = "icons" href = "https://stackexchange.com/users/11394647/sangeetha-kaliaperumal" target = "_blank"><img src = "./Assets/if_Stack_Overflow_1298710.png" width = 65px height = 73px /></a>
-      </div>
-  </div>
-
-    <footer>
-         <p class = "footer"> &#169; Copyright 2017 Sangeetha </p>
-    </footer>
   </body>
 </html>
