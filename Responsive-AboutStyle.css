@@ -1,0 +1,142 @@
+/* responsive About me styling */
+
+
+body {
+  width:100%;
+  background: rgb(238,238,238);
+}
+.top {
+  top: 0;
+  height:10vh;
+  border-bottom: : 5px solid rgba(205, 219, 216, 1);
+  background:rgba(225, 234, 232, 1);
+  width:100%;
+  /*margin-bottom:50px;
+  top:0;*/
+}
+.name {
+  background-color: rgb(26, 225, 225);
+  font-family: 'Merienda One', cursive;
+  margin-left: 2vw;
+  padding:1vw;
+  color:  white;
+  font-size: 20px;;
+  width:25%;
+  margin-top: 1.5vh;
+  float: left;
+  text-align: justify;
+/*  position: absolute;
+  bottom: -10px;
+  left:20px;*/
+}
+.topright {
+  margin-right:1vw;
+}
+.nav{
+  float: right;
+  margin:1.5vh 1vw;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 17px;
+}
+.nav a {
+  text-decoration: none;
+  color:hsla(169, 16%, 25%, 1);
+  padding:1vh 1vw;
+  border-right: 1px solid hsla(169, 16%, 69%, 1);
+}
+.mobilemenu {
+  border-bottom: : 5px solid rgba(205, 219, 216, 1);
+  background:rgba(225, 234, 232, 1);
+  width:100%;
+}
+.mtname {
+  background-color: rgb(26, 225, 225);
+  margin-left: 2vw;
+  padding:1vh 1vw;
+  color:  white;
+  font-family: 'Merienda One', cursive;
+  font-size: 2.5vw;
+  width:100%;
+}
+/*.topright {
+  margin-right:1vw;
+}*/
+.mobilemenu{
+
+  margin:2vh 2vw;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 1.5vw;
+  width: 100%;
+}
+.mnav a {
+  text-decoration: none;
+  color:hsla(169, 16%, 25%, 1);
+  border-right: 1px solid hsla(169, 16%, 69%, 1);
+  width:30vw;
+  float:left;
+  font-size: 18px;
+  text-align: center;
+}
+
+.clearfix::after {
+  content:"";
+  display: table;
+  clear: both;
+}
+.sidebar {
+  float: right;
+  margin:1vh 1vw;
+
+  width:30%;
+}
+
+
+
+{
+
+
+font-family: 'Asap', sans-serif;
+
+}
+
+footer {
+  width: 100%;
+  height:80px;
+  background: rgb(102,102,102);
+  text-align: center;
+  position:fixed;
+  bottom:0;
+}
+.footer {
+  font-size: 16px;
+  font-family: 'Rasa', serif;
+  padding:20px;
+}
+@media only screen and (min-width: 980px) {
+       #mobtab {
+         display: none;
+       }
+       #mobiletop {
+         display: none;
+
+       }
+}
+@media only screen and (max-width: 640px) {
+       #desktop {
+         display : none;
+       }
+       #desktopheader {
+         display : none;
+       }
+}
+@media only screen and (min-width: 768px) and (max-width: 980px)  {
+       #desktop {
+         display: none;
+       }
+       #desktopheader {
+         display : none;
+       }
+       #mobiletop {
+         display: none;
+       }
+}

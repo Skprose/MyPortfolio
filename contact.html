@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Basic Portfolio</title>
+    <link href = "contactstyle.css" type ="text/css" rel = "stylesheet" >
+
+    <link href="https://fonts.googleapis.com/css?family=Asap|Bree+Serif|Libre+Baskerville|Merienda+One|Rasa" rel="stylesheet">
+  </head>
+  <body>
+    <header class = "top">
+      <h3 class = "name">Sangeetha Kaliaperumal</h3>
+      <nav class = "topright" class= "clearfix">
+         <h6 class = 'nav'><a href = "index.html">About Me</a></h6>
+         <h6 class = 'nav'><a href = "portfolio.html">Portfolio</a></h6>
+         <h6 class = 'nav'><a href = "contact.html">Contact</a></h6>
+      </nav>
+    </header>
+    <div class = "clear"><br /><br /></div>
+  <div id = "jumbotron" >
+      <div class = "contact">
+        <h2 class = "contacth2">Contact</h2>
+         <form action="getinput.php" method="post" >
+            <label class = "contacttext">Name:</label>
+            <input class = "contacttext" type = "text" name="name" value = "John Smith"><br>
+            <label class = "contacttext">Email:</label>
+            <input class= "contacttext" type = "text" email = "email" value = "example@gmail.com"><br>
+            <label class = "contacttext">Message</label>
+            <input class = "contacttext" id = "multitxt" type = "text" message = "info"><br>
+            <input class = "button" type = "submit" value = "Submit"></br>
+         </form>
+       </div>
+       <div class = "sidebar">
+        <h2 class = "connecth2">Connect with Me</h2>
+        <a class = "icons" href = "https://github.com/Skprose" target = "_blank"><img src ="./Assets/if_29_939731.png" height = 65px width = 73px/></a>
+        <a class = "icons" href = "https://www.linkedin.com/in/sangeetha-kaliaperumal/" target = "_blank"><img src = "./Assets/if_square-linkedin_317725.png"  width = 73px height = 65px/></a>
+        <a class = "icons" href = "https://stackexchange.com/users/11394647/sangeetha-kaliaperumal" target = "_blank"><img src = "./Assets/if_Stack_Overflow_1298710.png" width = 65px height = 73px/></a>
+      </div>
+  </div>
+
+    <footer>
+         <p class = "footer"> &#169; Copyright 2017 Sangeetha </p>
+    </footer>
+  </body>
+</html>

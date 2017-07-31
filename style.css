@@ -1,0 +1,12 @@
+body {
+  text-align: center;
+  background-color: black;
+  color:white;
+  line-height: 20px;
+}
+a {
+  text-decoration: none;
+  color:grey;
+  line-height: 20px;
+  font-style: italic;
+}

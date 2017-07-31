@@ -1,0 +1,124 @@
+ body {
+  width:100%;
+  background-image: url('./Assets/concrete-texture/concrete-texture.png');
+  background-size: cover;
+  color:#777777;
+}
+.top {
+  position: fixed;
+  border-bottom: : 5px solid rgba(205, 219, 216, 1);
+  background:rgba(225, 234, 232, 1);
+  width:100%;
+  margin-bottom:50px;
+  top:0;
+  left:0;
+
+}
+.name {
+  background-color: rgb(26, 225, 225);
+  margin-left: 50px;
+  padding:20px;
+  color:  white;
+  font-family: 'Merienda One', cursive;
+  font-size: 20px;
+  position: absolute;
+  bottom: -25px;
+  left:20px;
+}
+.topright {
+  margin-right:25px;
+}
+.nav{
+  float: right;
+  margin:25px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 25px;
+}
+.nav a {
+  text-decoration: none;
+  color:hsla(169, 16%, 25%, 1);
+  padding:15px;
+  border-right: 1px solid hsla(169, 16%, 69%, 1);
+}
+
+.clear {
+  clear : both;
+}
+#jumbotron {
+  width: 100%;
+  margin-left: 60px;
+  margin-top:60px;
+  margin-bottom: 20px;
+  position: fixed;
+}
+
+.about {
+width:60%;
+background-color: #ffffff;
+float:left;
+font-family: 'Bree Serif', serif;
+font-size: 18px;
+line-height: 2;
+}
+
+.img {
+  margin: 20px;
+  float: left;
+}
+
+
+.abouth2{
+  width:90%;
+  font-size: 30px;
+  padding:20px;
+  margin: 20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
+}
+.abouttext {
+  margin-left: 20px;
+}
+
+.sidebar {
+
+  position: fixed;
+  width:28%;
+  right: 0px;
+  padding:20px;
+  margin-right:70px;
+  background-color: #ffffff;
+  font-family: 'Bree Serif', serif;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.connecth2 {
+  font-size: 30px;
+  margin:20px;
+  padding:20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
+}
+
+.icons {
+  margin: 20px;
+  padding: 10px;
+
+}
+
+
+footer {
+  width: 100%;
+  height:80px;
+  clear: both;
+  background: rgb(102,102,102);
+  text-align: center;
+  position:fixed;
+  bottom:0;
+}
+.footer {
+  font-size: 18px;
+  font-family: 'Rasa', serif;
+  padding:20px;
+  color:white;
+  z-index: 1;
+}

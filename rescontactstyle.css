@@ -1,0 +1,279 @@
+ body {
+  width:100%;
+  background-image: url('./Assets/concrete-texture/concrete-texture.png');
+  background-size: cover;
+  color:#777777;
+}
+.top {
+  position: fixed;
+  border-bottom: : 5px solid rgba(205, 219, 216, 1);
+  background:rgba(225, 234, 232, 1);
+  width:100%;
+  margin-bottom:50px;
+  top:0;
+  left:0;
+
+}
+.name {
+  background-color: rgb(26, 225, 225);
+  margin-left: 50px;
+  padding-top:20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  color:  white;
+  font-family: 'Merienda One', cursive;
+  font-size: 20px;
+  max-width: 18vw;
+  position: absolute;
+  bottom: -2vh;
+  left: 2vw;
+}
+.topright {
+  margin-right:25px;
+    margin-bottom:20px;
+}
+.nav{
+  float: right;
+  margin:25px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 25px;
+}
+.nav a {
+  text-decoration: none;
+  color:hsla(169, 16%, 25%, 1);
+  padding:15px;
+  border-right: 1px solid hsla(169, 16%, 69%, 1);
+}
+
+.clear {
+  clear : both;
+}
+#jumbotron {
+  width: 100%;
+  margin-left: 60px;
+  margin-top:60px;
+  margin-bottom: 20px;
+}
+
+.contact {
+width:50vw;
+background-color: #ffffff;
+float:left;
+font-family: 'Bree Serif', serif;
+font-size: 18px;
+line-height: 2;
+}
+
+
+
+
+.contacth2{
+  width:80%;
+  font-size: 30px;
+  padding:20px;
+  margin: 20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
+}
+.contacttext {
+  margin-left: 20px;
+  width:80%;
+  padding:20px;
+  margin:20px;
+  font-family: 'Bree Serif';
+  font-size: 18px;
+}
+#multitxt {
+  height : 45px;
+}
+.button {
+  font-size: 20px;
+  padding:20px;
+  margin-left:20px;
+  margin-bottom: 20px;
+  background-color: #4aaaa5;
+  color: hsla(174, 21%, 12%, 1);
+  font-weight: bold;
+  width: 165px;
+  border-radius: 25px;
+}
+.button:active{
+  background-color: grey;
+}
+.sidebar {
+  float: right;
+  right:20px;
+  width:40vw;
+  padding:10px;
+  margin-right:10px;
+  background-color: #ffffff;
+  font-family: 'Bree Serif', serif;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.connecth2 {
+  font-size: 30px;
+  margin:20px;
+  padding:20px;
+  border-bottom: 1px solid hsla(169, 16%, 69%, 1);
+  color:#4aaaa5;
+}
+
+.icons {
+  margin: 20px;
+  padding: 10px;
+
+}
+
+footer {
+  width: 100%;
+  height:80px;
+  clear: both;
+  background: rgb(102,102,102);
+  text-align: center;
+  margin-top:10px;
+}
+
+.footer {
+  font-size: 18px;
+  font-family: 'Rasa', serif;
+  padding:20px;
+  color: white;
+  z-index: 1;
+}
+
+
+
+/* Media Queries */
+@media only screen and (max-width:982px)
+{
+  .top {
+    width: 100%;
+    height: 8vh;
+  }
+
+   .name {
+       font-size:18px;
+    }
+  .nav {
+    font-size:16px;
+  }
+  .icons {
+    padding:0.5px;
+    margin:0.5spx;
+  }
+  footer {
+    position: static;
+  }
+}
+
+@media only screen and (max-width:780px)
+{
+  .top {
+    width:100%;
+  /*  height:8vh;*/
+  }
+  .name {
+
+     font-size: 16px;
+     padding: 10px;
+   }
+  .nav{
+    padding:10px;
+    font-size: 15px;
+    padding-bottom: 20px;
+  }
+  .jumbotron {
+      overflow: auto;
+  }
+  .contact {
+  width: 100%;
+     }
+
+  .sidebar {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+
+    }
+  .icons {
+      padding:10px;
+      margin:5px;
+    }
+
+  footer {
+    position: static;
+  }
+ }
+@media only screen and(max-width:720px)
+{
+  .top {
+        width: 100%;
+        height: 40vh;
+        position: relative;
+   }
+   h3 {
+     width:100%;
+   }
+
+.name {
+  position: absolute;
+  top:0;
+  background:rgba(225, 234, 232, 1);
+ font-size: 22px;
+  width: 100%;
+  margin:10px;
+  text-align: center;
+  color: black;
+}
+.topright {
+   width:100%;
+   padding:10px;
+   margin:10px;
+   position:absolute;
+   bottom:0;
+   display:flex;
+ }
+
+}
+@media only screen and (max-width:640px)
+{
+      .top {
+            width: 100%;
+            height: 40vh;
+            position: relative;
+       }
+
+    .name {
+      position: absolute;
+      top:0;
+      color: black;
+     background:rgba(225, 234, 232, 1);
+     font-size: 22px;
+      width: 100%;
+      margin:10px;
+      text-align: center;
+      height:50%;
+    }
+    .topright {
+       width:100%;
+       padding:10px;
+       margin:10px;
+       position:absolute;
+       bottom:0;
+       display:flex;
+     }
+    .sidebar{
+      width: 100%;
+    }
+
+    .contact {
+      width: 100%;
+    }
+    .jumbotron {
+      overflow: auto;
+    }
+    footer {
+      width:100%;
+    }
+}
