@@ -83,7 +83,7 @@ line-height: 2;
 }
 
 .txt {
-  width: 100%;
+  width: 90%;
   background-color: #4aaaa5;
   color: white;
   font-size: 16px;
@@ -164,7 +164,18 @@ footer {
   color: white;
   z-index: 1;
 }
-
+/* Return to Index PAge  */
+#return {
+  font-size: 16px;
+  padding:20px;
+  margin-left:20px;
+  margin-bottom: 20px;
+  background-color: #c4b7d0;
+  color: black;;
+  font-weight: bold;
+  width: 170px;
+  border-radius: 25px;
+}
 
 /* Media queries Section */
 @media only screen and (min-width:640px)
