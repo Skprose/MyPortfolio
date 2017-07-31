@@ -1,6 +1,8 @@
 body {
  width:100%;
- background: rgb(238,238,238);
+ background-image: url('./Assets/concrete-texture/concrete-texture.png');
+ background-size: cover;
+ color:#777777;
 }
 
 .name {

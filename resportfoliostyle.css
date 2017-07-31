@@ -3,6 +3,7 @@
   background-image: url('./Assets/concrete-texture/concrete-texture.png');
   background-size: cover;
   color:#777777;
+  padding-top: 50px;
 }
 .top {
   position: fixed;
@@ -88,6 +89,8 @@ line-height: 2;
   font-size: 16px;
   position: absolute;
   bottom: 0;
+  margin-right: 10px;
+  padding:10px;
 
 }
 .img {

@@ -1,31 +1,21 @@
-/* Boot strap About me styling */
-
  body {
   width:100%;
   background-image: url('./Assets/concrete-texture/concrete-texture.png');
   background-size: cover;
   color:#777777;
-  
 }
-
 .name {
-  background-color: rgb(26, 225, 225);
-  padding:20px;
-  color:  white;
-  font-family: 'Merienda One', cursive;
-  font-size: 25px;
+ background-color: rgb(26, 225, 225);
+ padding:20px;
+ color:  white;
+ font-family: 'Merienda One', cursive;
+ font-size: 25px;
 }
 
 .mymenu {
-  font-size: 20px;
-  font-family: 'Libre Baskerville', serif;
-  padding: 15px;
-}
-.about {
-  width:50vw;
-}
-.sidebar {
-  width:40vw;
+ font-size: 20px;
+ font-family: 'Libre Baskerville', serif;
+ padding: 15px;
 }
 #mainbox{
    margin-top: 50px;
@@ -37,14 +27,25 @@
   padding:20px;
   border-bottom: 1px solid hsla(169, 16%, 69%, 1);
   color:#4aaaa5;
+  margin-left: 1px;
 }
-.aboutmeh2{
+.contacth2{
   width:80%;
   font-size: 30px;
   padding:20px;
   margin: 20px;
   border-bottom: 1px solid hsla(169, 16%, 69%, 1);
   color:#4aaaa5;
+  margin-left: 1px;
+}
+#name {
+  width:80%;
+}
+#email {
+  width:80%;
+}
+#message {
+  width: 80%;
 }
 #fid {
   background: rgb(102,102,102);
@@ -57,4 +58,13 @@
   padding:20px;
   color: white;
   z-index: 1;
+}
+#button {
+  font-size: 20px;
+  padding:20px 40px;
+  margin-top:20px;
+  background-color: #4aaaa5;
+  color: hsla(174, 21%, 12%, 1);
+  font-weight: bold;
+
 }

@@ -3,9 +3,12 @@
   <head>
     <meta charset="utf-8">
     <title>Basic Portfolio</title>
-    <link href = "contactstyle.css" type ="text/css" rel = "stylesheet" >
-
-    <link href="https://fonts.googleapis.com/css?family=Asap|Bree+Serif|Libre+Baskerville|Merienda+One|Rasa" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css?family=Asap|Bree+Serif|Libre+Baskerville|Merienda+One|Rasa" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link href="bootcontactstyle.css" type ="text/css" rel ="stylesheet" />
   </head>
   <body>
     <nav class ="navbar navbar-default navbar-fixed-top">
@@ -25,17 +28,43 @@
            <li class = "mymenu"><a href = "boottsrap-contact.html">Contact</a></li>
          </ul>
         <div>
-  </di<div class = "container" id= "mainbox">
+      </div>
+    </nav>
+  <div class = "container" id= "mainbox">
   <div class ="row">
      <div class = "col-lg-8">
           <div class = "row">
                  <div class = "col-md-12">
-                    <div><h2 class = "contact2">Contact</h2></div>
+                    <div><h2 class = "contacth2">Contact</h2></div>
                 </div>
           </div>
           <div class = "row">
                  <div class = "col-md-12">
-
+                     <div class = "form-group">
+                          <label for="name">Name :</label>
+                          <input type = "text" class = "form-control" id ="name" value ="John Smith">
+                      </div>
+                </div>
+          </div>
+          <div class = "row">
+                 <div class = "col-md-12">
+                     <div class = "form-group">
+                          <label for="email">Email :</label>
+                          <input type = "text" class = "form-control" id ="email"value = "example@google.com" >
+                      </div>
+                </div>
+          </div>
+          <div class = "row">
+                 <div class = "col-md-12">
+                     <div class = "form-group">
+                          <label for="message">Message :</label>
+                          <textarea class ="form-control"  rows= "5"  id ="message"> </textarea>
+                      </div>
+                </div>
+          </div>
+          <div class = "row">
+                 <div class = "col-md-12">
+                     <input id ="button" type = "submit" class ="btn btn-primary btn-lg" value = "Submit">
                 </div>
           </div>
       </div>
@@ -60,45 +89,9 @@
   </div> <!-- End main row -->
 </div> <!--End container class -->
 
+<div id = "fid" class = "panel panel-default">
+     <div class = "panel-body" id = "footer"> &#169; Copyright 2017 Sangeetha </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div id = "jumbotron" >
-      <div class = "contact">
-        <h2 class = "contacth2">Contact</h2>
-         <form action="getinput.php" method="post" >
-            <label class = "contacttext">Name:</label>
-            <input class = "contacttext" type = "text" name="name" value = "John Smith"><br>
-            <label class = "contacttext">Email:</label>
-            <input class= "contacttext" type = "text" email = "email" value = "example@gmail.com"><br>
-            <label class = "contacttext">Message</label>
-            <input class = "contacttext" id = "multitxt" type = "text" message = "info"><br>
-            <input class = "button" type = "submit" value = "Submit"></br>
-         </form>
-       </div>
-       <div class = "sidebar">
-        <h2 class = "connecth2">Connect with Me</h2>
-        <a class = "icons" href = "https://github.com/Skprose" target = "_blank"><img src ="./Assets/if_29_939731.png" height = 65px width = 73px/></a>
-        <a class = "icons" href = "https://www.linkedin.com/in/sangeetha-kaliaperumal/" target = "_blank"><img src = "./Assets/if_square-linkedin_317725.png"  width = 73px height = 65px/></a>
-        <a class = "icons" href = "https://stackexchange.com/users/11394647/sangeetha-kaliaperumal" target = "_blank"><img src = "./Assets/if_Stack_Overflow_1298710.png" width = 65px height = 73px/></a>
-      </div>
-  </div>
-
-    <footer>
-         <p class = "footer"> &#169; Copyright 2017 Sangeetha </p>
-    </footer>
   </body>
 </html>
