@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>PsychicGame</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class = "container">
+          <div class = "jumbotron">
+                  <h1>The Psychic Game</h1>
+                  <h2>Guess what letter I'm thinking of.....</h2>
+                  <h2><a href = "index.html">Return to Main Menu</a></h2>
+          </div>
+    </div>
+    <div class = "container-fluid" id = "score">
+              <div class = "panel panel-header">
+                    <h2>Player Guess: </h2>
+                    <h2 id = "pguess"></h2>
+                    <h2>Computer Choice:  </h2>
+                    <h2 id = "cguess"></h2>
+              </div>
+                <div class = "panel panel-body">
+                      <h3>Wins : </h3>
+                      <h3 id = "pwin"></h3>
+
+                </div>
+                <div class = "panel panel-body">
+                      <h3>Lost : </h3>
+                      <h3 id = "plost"></h3>
+
+                </div>
+    </div>
+    <script>
+
+                var guess = "a";
+                 var win = 0;
+                 var lost = 0;
+                 var draw = 0;
+                 var game = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+                document.onkeyup = function(event)
+                {
+                           var entry = event.key;
+                           console.log('Event key :'+entry);
+                           var index = parseInt(Math.random()*26);
+                           //guess = toLowerCase(prompt("Enter Alphabet letter : "));
+                           guess = entry.toLowerCase();
+                           console.log('Convert to'+guess);
+                           console.log('Computer choose : ' + game[index])
+                           if ( guess === game[index])
+                           {
+                             win++;
+                             console.log('Win '+win);
+                           }
+                           else if (guess ) {
+                             lost++;
+                             console.log('lost:'+lost);
+                           }
+                          else
+                          {
+                            alert('Invalid Key pressed....Please press letters only');
+                          }
+                          var t1 = document.getElementById("pguess");
+                          var t2 = document.getElementById("cguess");
+                          var t3 = document.getElementById('pwin');
+                            var t4 = document.getElementById('plost');
+                          t1.innerHTML = guess;
+                          t2.innerHTML = game[index];
+                          t3.innerHTML = win;
+                          t4.innerHTML = lost;
+                 }
+
+    </script>
+  </body>
+</html>

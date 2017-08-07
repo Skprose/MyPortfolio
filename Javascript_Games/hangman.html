@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hangman</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+     <link href = "stylehangman.css" rel = "stylesheet" type ="text/css">
+  </head>
+  <body>
+    <div class = "container">
+          <div class = "jumbotron">
+                  <h1>HANGMAN</h1>
+                  <h2>80's Style</h2>
+                  <h3><a href= "index.html">Return to Main Menu</a></h3>
+          </div>
+    </div>
+    <div class = "container-fluid" id = "score">
+         <div class = "row">
+             <div class = "col-lg-12">
+                  <h1 class = "name">Artist</h1>
+                  <h1 class = "album">Album</h1>
+            </div>
+         </div>
+         <div class = "row">
+           <div class = "col-lg-12">
+             <h2>Guess the artist name</h2>
+             <h4>PRESS ANY KEY TO GET STARTED !!</h3>
+          </div>
+        </div>
+         <div class = "row">
+              <div class = "col-lg-6">
+                    <img id = "album" src = " " />
+              </div>
+                <div class = "col-lg-6">
+                    <h2>Wins</h2>
+                    <h1 id = "twin"></h1>
+                    <h1>Lost</h1>
+                    <h1 id = "tlost"></h1>
+                </div>
+          </div>
+          <div class = "row">
+               <div class = "col-lg-6">
+                     <h4>Number of Guesses remaining</h4>
+                     <h4 id = "tguess"></h4>
+               </div>
+                 <div class = "col-lg-6">
+                     <h4>Letter already guessed</h4>
+                     <h4 id = "letterguess"></h4>
+                 </div>
+           </div>
+           <div class = "row">
+                 <div class = "col-lg-12">
+                       <h3>Current Word</h3>
+                       <p id = "word"></p>
+                       <p id = "dash"></p>
+                </div>
+           </div>
+    </div>
+    <script type = "text/javascript">
+
+                  // Global variables
+                  var gl_artist = ['jense','chitra','janaki','spb','illayaraja','hariharan'];
+                  var gl_album = ["","Padariyan Padiparian","Katril enthan geetham","Mannil intha kathal","Naan thedum sevanthi",""];
+                  var gl_tries;
+                  var gl_word ;
+                  var gl_tryletter ;
+                  var gl_end = false;
+                  var gl_answer ;
+                  var gl_win = 0;
+                  var gl_lost = 0;
+                  var ht3 = document.getElementById('twin');
+                  var ht4 = document.getElementById('tlost')
+                  ht3.innerHTML = 0;
+                  ht4.innerHTML = 0;
+                    function game()
+                    {
+
+
+                           var index = parseInt(Math.random()*(gl_artist.length));
+                           gl_word = gl_artist[index];
+                           console.log('The Artisit is :'+gl_artist[index]);
+                           var dashletter = "";
+                            gl_tries = gl_word.length * 2;
+                            gl_tryletter = "";
+                            gl_end = false;
+                            gl_answer = "";
+                           //getting HTML elements
+                           var t1 = document.getElementById("dash");
+                           var ht2 = document.getElementById("tguess");
+                           var ht5 = document.getElementById('letterguess');
+                           var t2 = document.getElementById("word");
+                           var n1 = document.getElementById("name");
+
+                           for(var l = 0;l < gl_word.length;l++)
+                           {
+                               gl_answer = gl_answer + ".";
+                               dashletter = dashletter + " _";
+                           }
+                           t1.innerHTML = dashletter;
+                          // t2.innerHTML = null;
+                           //n1.innerHTML = 'Game on' ;
+                          // console.log('dash letter'+dashletter);
+                           ht2.innerHTML = gl_tries;
+                           ht5.innerHTML = gl_tryletter;
+                     }
+
+                     function display()
+                     {
+                       var vname = document.getElementById("name");
+                       var valbum = document.getElementById("album");
+                       vname.innerHTML = gl_word;
+                       var ind = gl_artist.indexOf(gl_word);
+                       valbum.innerHTML = gl_album[ind];
+                     }
+
+           game();
+
+
+                document.onkeyup = function(event)
+                {
+                           var entry = event.key;
+                           console.log('Event key :'+entry);
+                           letter = entry.toLowerCase();
+                           var found = false;
+
+
+                           for( var k =0; k < gl_tryletter.length; k++)
+                           {
+                                 if (letter === gl_tryletter[k])
+                                 {
+                                   found = true;
+                                 }
+                           }
+
+                           if (found)
+                           {
+                                 console.log(" found Number of tries: "+ gl_tries);
+
+                           }
+                           else {
+                                     var init = false;
+                                     for(var i =0; i < gl_word.length; i++)
+                                     {
+                                       console.log('letter inthe for loop : '+letter);
+                                       console.log('artisit letters : '+gl_word[i]);
+                                       if ( letter === gl_word[i] )
+                                       {
+                                                var part1 = gl_answer.substring(0,i);
+                                                var part2 = gl_answer.substring(i+1);
+                                                console.log('part1 : '+part1);
+                                                console.log('part2 : '+part2);
+                                                var fulltext = part1.concat(letter,part2);
+                                                gl_answer = fulltext;
+                                                console.log("full: "+fulltext);
+                                                console.log('Right Letter :  '+ gl_answer[i]);
+                                                init = true;
+                                         }
+
+                                     }
+                                  if (init)
+                                   {
+                                        console.log('right letter guess : '+gl_answer);
+                                          gl_tries = gl_tries - 1 ;
+                                   }
+                                  else {
+                                        gl_tryletter = gl_tryletter + letter;
+                                       // console.log('tryletter : '+ gl_tryletter.length);
+                                        gl_tries = gl_tries - 1 ;
+                                        console.log('try letter : '+ gl_tryletter);
+                                  }
+
+                           }
+
+
+
+
+
+                            //reset to next game
+                            console.log('the answer array : '+gl_answer);
+                            console.log('The artist : '+gl_word);
+                            console.log('The letters guessed array : '+gl_tryletter);
+                            if (gl_answer === gl_word)
+                            {
+                              gl_win++;
+                              gl_end = true;
+                              display();
+                            }
+                            else if (gl_tries === 0) {
+                              gl_lost++;
+                              gl_end = true;
+                              display();
+                            }
+
+                          var ht1 = document.getElementById("word");
+                          var ht2 = document.getElementById("tguess");
+                          var ht3 = document.getElementById('twin');
+                          var ht4 = document.getElementById('tlost');
+                          var ht5 = document.getElementById('letterguess');
+                          ht1.innerHTML = gl_answer;
+                          ht2.innerHTML = gl_tries;
+                          ht3.innerHTML = gl_win;
+                          ht4.innerHTML = gl_lost;
+                          ht5.innerHTML = gl_tryletter;
+
+                          if (gl_end) {
+                            game();
+                          }
+                 }
+
+
+
+    </script>
+  </body>
+</html>
