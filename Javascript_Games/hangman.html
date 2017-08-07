@@ -1,12 +1,12 @@
 <!DOCTYPE html>
   <head>
-    <meta charset="utf-8">
-    <title>Hangman</title>
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <link href = "stylehangman.css" rel = "stylesheet" type ="text/css">
-  </head>
+              <meta charset="utf-8">
+              <title>Hangman</title>
+              <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+              <link href="https://fonts.googleapis.com/css?family=Asap|Bree+Serif|Libre+Baskerville|Merienda+One|Rasa" rel="stylesheet">
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+              <link href = "stylehangman.css" type ="text/css" rel = "stylesheet" />
+  </head
   <body>
     <div class = "container">
           <div class = "jumbotron">
@@ -41,11 +41,11 @@
           </div>
           <div class = "row">
                <div class = "col-md-6">
-                     <h2>Number of Guesses remaining</h2>
+                     <h3>Number of Guesses remaining</h3>
                      <h2 id = "tguess"></h2>
                </div>
                  <div class = "col-md-6">
-                     <h2>Letter already guessed</h2>
+                     <h3>Letter already guessed</h3>
                      <h2 id = "letterguess"></h2>
                  </div>
            </div>
@@ -108,8 +108,6 @@
                            }
                            t1.innerHTML = dashletter;
                            t2.innerHTML = "";
-                           //n1.innerHTML = 'Game on' ;
-                          // console.log('dash letter'+dashletter);
                            ht2.innerHTML = gl_tries;
                            ht5.innerHTML = gl_tryletter;
                      }
@@ -119,12 +117,12 @@
                        var vname = document.getElementById("name");
                        var valbum = document.getElementById("album");
                        var vhd = document.getElementById("subhead");
-                       var pic = document.getElementById("artpic")
-                       console.log('The wordin display :'+gl_word);
+                       var pic = document.getElementById("artpic");
+                       //console.log('The wordin display :'+gl_word);
                        vname.innerHTML = gl_word;
                        var ind = gl_artist.indexOf(gl_word);
                        valbum.innerHTML = gl_album[ind];
-                       vhd.innerHTML = "The Artisit is : "+gl_word+"  Continue Playing...Guess the next artist";
+                       vhd.innerHTML = "The Artisit is : "+gl_word+" ...  Continue Playing...Guess the next artist";
                        pic.setAttribute("src",gl_pics[ind]);
                      }
 
@@ -153,55 +151,56 @@
 
                            }
                            else {
-                                     var init = false;
-                                     for(var i =0; i < gl_word.length; i++)
-                                     {
-                                       console.log('letter inthe for loop : '+letter);
-                                       console.log('artisit letters : '+gl_word[i]);
-                                       if ( letter === gl_word[i] )
-                                       {
-                                                var part1 = gl_answer.substring(0,i);
-                                                var part2 = gl_answer.substring(i+1);
-                                                console.log('part1 : '+part1);
-                                                console.log('part2 : '+part2);
-                                                var fulltext = part1.concat(letter,part2);
-                                                gl_answer = fulltext;
-                                                console.log("full: "+fulltext);
-                                                console.log('Right Letter :  '+ gl_answer[i]);
-                                                init = true;
-                                         }
+                                               var init = false;
+                                               for(var i =0; i < gl_word.length; i++)
+                                               {
+                                                 //console.log('letter inthe for loop : '+letter);
+                                                 //console.log('artisit letters : '+gl_word[i]);
+                                                 if ( letter === gl_word[i] )
+                                                 {
+                                                          var part1 = gl_answer.substring(0,i);
+                                                          var part2 = gl_answer.substring(i+1);
+                                                          //console.log('part1 : '+part1);
+                                                          //console.log('part2 : '+part2);
+                                                          var fulltext = part1.concat(letter,part2);
+                                                          gl_answer = fulltext;
+                                                          //console.log("full: "+fulltext);
+                                                          //console.log('Right Letter :  '+ gl_answer[i]);
+                                                          init = true;
+                                                   }
+
+                                               }
+                                            if (init)
+                                             {
+                                                  console.log('right letter guess : '+gl_answer);
+                                                    //gl_tries = gl_tries - 1 ;
+                                             }
+                                            else {
+                                                  gl_tryletter = gl_tryletter + letter;
+                                                 // console.log('tryletter : '+ gl_tryletter.length);
+                                                  gl_tries = gl_tries - 1 ;
+                                                  //console.log('try letter : '+ gl_tryletter);
+                                            }
 
                                      }
-                                  if (init)
-                                   {
-                                        console.log('right letter guess : '+gl_answer);
-                                          gl_tries = gl_tries - 1 ;
-                                   }
-                                  else {
-                                        gl_tryletter = gl_tryletter + letter;
-                                       // console.log('tryletter : '+ gl_tryletter.length);
-                                        gl_tries = gl_tries - 1 ;
-                                        console.log('try letter : '+ gl_tryletter);
-                                  }
-                                }
                                     //reset to next game
-                                    console.log('the answer array : '+gl_answer);
-                                    console.log('The artist : '+gl_word);
-                                    console.log('The letters guessed array : '+gl_tryletter);
+                                    //console.log('the answer array : '+gl_answer);
+                                    //console.log('The artist : '+gl_word);
+                                    //console.log('The letters guessed array : '+gl_tryletter);
                                     if (gl_answer === gl_word)
                                     {
-                                      gl_win++;
-                                      gl_end = true;
-                                      var ht1 = document.getElementById("word");
-                                      ht1.innerHTML = gl_word;
-                                    //  alert("Congrats...");
-                                      display();
+                                            gl_win++;
+                                            gl_end = true;
+                                            var ht1 = document.getElementById("word");
+                                            ht1.innerHTML = gl_word;
+                                          //  alert("Congrats...");
+                                            display();
                                     }
                                     else if (gl_tries === 0) {
-                                      gl_lost++;
-                                      gl_end = true;
-                                      //alert("Ooops...");
-                                      display();
+                                            gl_lost++;
+                                            gl_end = true;
+                                            //alert("Ooops...");
+                                            display();
                                     }
 
                                   var ht1 = document.getElementById("word");
