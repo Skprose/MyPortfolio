@@ -97,21 +97,21 @@
                                dashletter = dashletter + " _";
                            }
                            t1.innerHTML = dashletter;
-                          // t2.innerHTML = null;
+                           t2.innerHTML = "";
                            //n1.innerHTML = 'Game on' ;
                           // console.log('dash letter'+dashletter);
                            ht2.innerHTML = gl_tries;
                            ht5.innerHTML = gl_tryletter;
                      }
 
-                     function display()
+                  /*   function display()
                      {
                        var vname = document.getElementById("name");
                        var valbum = document.getElementById("album");
                        vname.innerHTML = gl_word;
                        var ind = gl_artist.indexOf(gl_word);
                        valbum.innerHTML = gl_album[ind];
-                     }
+                     }*/
 
            game();
 
@@ -183,12 +183,16 @@
                             {
                               gl_win++;
                               gl_end = true;
-                              display();
+                              var ht1 = document.getElementById("word");
+                              ht1.innerHTML = gl_word;
+                            //  alert("Congrats...");
+                              //display();
                             }
                             else if (gl_tries === 0) {
                               gl_lost++;
                               gl_end = true;
-                              display();
+                              //alert("Ooops...");
+                            //  display();
                             }
 
                           var ht1 = document.getElementById("word");
