@@ -17,13 +17,14 @@
     <div class = "container-fluid" id = "score">
          <div class = "row">
              <div class = "col-lg-12">
+
                   <h1 id = "name">Artist</h1>
                   <h1 id = "album">Album</h1>
             </div>
          </div>
          <div class = "row">
            <div class = "col-lg-12">
-             <h2>Guess the artist name</h2>
+             <h2 id = "subhead">Guess the artist name</h2>
              <h4>PRESS ANY KEY TO GET STARTED !!</h3>
           </div>
         </div>
@@ -108,10 +109,12 @@
                      {
                        var vname = document.getElementById("name");
                        var valbum = document.getElementById("album");
+                       var vhd = document.getElementById("subhead");
                        console.log('The wordin display :'+gl_word);
                        vname.innerHTML = gl_word;
                        var ind = gl_artist.indexOf(gl_word);
                        valbum.innerHTML = gl_album[ind];
+                       vhd.innerHTML = "Continue Playing...Guess the next artist";
                      }
 
            game();
