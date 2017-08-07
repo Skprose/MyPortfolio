@@ -10,8 +10,9 @@
   <body>
     <div class = "container">
           <div class = "jumbotron">
-                  <h1>HANGMAN</h1>
-                  <h2>80's Style</h2>
+                  <h1>Hangman - 80's Style</h1>
+                  <h2>Welcome to Indian Cine Music</h2>
+                  <h2>Guessing Game</h2>
                   <h3><a href= "index.html">Return to Main Menu</a></h3>
           </div>
     </div>
@@ -21,20 +22,30 @@
                       <img id = "artpic" src = "https://banyantreeevents.files.wordpress.com/2014/03/indian-instruments-pack.jpg" width = "200" height="200" />
                 </div>
                  <div class = "col-md-6">
-                      <h1 id = "name">Artist</h1>
-                      <h1 id = "album">Album</h1>
+                      <h1 id = "name">Vinnaithandi Varuvaya</h1>
+                      <h1 id = "album">Mannippaya...</h1>
                 </div>
          </div>
          <div class = "row">
+                 <div class = "col-mg-12">
+                   <audio id = "audiofile" controls autoplay>
+                         <source src = "./audio/mainpagesong.mp3" type ="audio/mpeg">
+                          Your Browser does not support the audio functionality
+                   </audio>
+                </div>
+        </div>
+         <div class = "row">
                  <div class = "col-lg-12">
-                   <h2 id = "subhead">Guess the artist name</h2>
-                   <h4>PRESS ANY KEY TO GET STARTED !!</h3>
+                   <h4 id = "subhead">Guess the artist name while listening to this song...</h4>
+                   <h4>PRESS ANY KEY TO GET STARTED !!</h4>
                 </div>
         </div>
          <div class = "row">
                 <div class = "col-lg-6">
                     <h2>Wins</h2>
                     <h1 id = "twin"></h1>
+                </div>
+                <div class = "col-lg-6">
                     <h1>Lost</h1>
                     <h1 id = "tlost"></h1>
                 </div>
@@ -60,17 +71,32 @@
     <script type = "text/javascript">
 
                   // Global variables
-                  var gl_artist = ['jency','chitra','janaki','spb','illayaraja','hariharan'];
-                  var gl_album = ["Om Kannuku nooru","Padariyan Padiparian","Katril enthan geetham","Mannil intha kathal","Naan thedum sevanthi","Chanda Re Chanda Re"];
+                  var gl_artist = ['jency','chitra','janaki','spb','illayaraja','hariharan','yesudas'];
+                  var gl_album = ["En Vaanilay",
+                                   "Ninnukori Varanam",
+                                   "Kaatril enthan geetham",
+                                   "Senorita",
+                                   "Raja Raajathi",
+                                   "Nee Kaatru Naan",
+                                   "Thoongatha Vishigal"];
                   var gl_pics = [
                          "http://www.cinecoffee.com/wp-content/uploads/2015/01/Singer-Jency-Antony-Latest-Stills.png",
                          "http://www.thehindu.com/2005/07/21/images/2005072113740201.jpg",
                          "http://www.cineradham.com/assets/images/biography/singers/s-janaki/1419940481s-janaki-biography.jpg",
                          "https://1.bp.blogspot.com/_FKxki5wK_p0/R2LKW1CeppI/AAAAAAAAABQ/twgtu3Xbb7M/S220/SPB+14.JPG",
                          "http://2.bp.blogspot.com/-L9RklEQSXUU/UbX7ViTMciI/AAAAAAAAAm4/YL0rjB31Nes/s1600/3486337.cms.jpg",
-                         "https://chiloka.com/i/i/h/a/r/hariharan-7.jpg"
+                         "https://chiloka.com/i/i/h/a/r/hariharan-7.jpg",
+                         "http://s.saregama.com/image/c/m/0/fb/9e/yeshu_1401893713.jpg"
                          ]
-
+                  var gl_audio = [
+                        "./audio/jencysong.mp3",
+                        "./audio/chitrasong.mp3",
+                        "./audio/janakisong.mp3",
+                        "./audio/spbsong.mp3",
+                        "./audio/illayarajasong.mp3",
+                        "./audio/hariharansong.mp3",
+                        "./audio/yesudassong.mp3"
+                  ]
                   var gl_tries;
                   var gl_word ;
                   var gl_tryletter ;
@@ -118,12 +144,14 @@
                        var valbum = document.getElementById("album");
                        var vhd = document.getElementById("subhead");
                        var pic = document.getElementById("artpic");
+                       var aud = document.getElementById("audiofile");
                        //console.log('The wordin display :'+gl_word);
                        vname.innerHTML = gl_word;
                        var ind = gl_artist.indexOf(gl_word);
                        valbum.innerHTML = gl_album[ind];
-                       vhd.innerHTML = "The Artisit is : "+gl_word+" ...  Continue Playing...Guess the next artist";
+                       vhd.innerHTML = "The Artisit is : "+gl_word+" ... listen to her song while guessing the next artist... ";
                        pic.setAttribute("src",gl_pics[ind]);
+                       aud.setAttribute("src",gl_audio[ind]);
                      }
 
            game();
@@ -131,6 +159,7 @@
 
                 document.onkeyup = function(event)
                 {
+
                            var entry = event.key;
                            console.log('Event key :'+entry);
                            letter = entry.toLowerCase();
