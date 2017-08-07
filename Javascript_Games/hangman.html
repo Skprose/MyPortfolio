@@ -38,6 +38,7 @@
                  <div class = "col-lg-12">
                    <h4 id = "subhead">Guess the artist name while listening to this song...</h4>
                    <h4>PRESS ANY KEY TO GET STARTED !!</h4>
+                   <p>Hint - janaki,jency,illayaraja,hariharan,yesudas,chitra,spb</p>
                 </div>
         </div>
          <div class = "row">
@@ -159,93 +160,104 @@
 
                 document.onkeyup = function(event)
                 {
+                   var codek = event.keyCode;
+                   console.log('codek + :'+codek);
+                   if ( (( codek > 64) && (codek < 91)) ||
+                      ((codek > 96) && (codek < 123)) )
+                      {
+                                       var entry = event.key;
+                                       console.log('Event key :'+entry);
+                                       letter = entry.toLowerCase();
 
-                           var entry = event.key;
-                           console.log('Event key :'+entry);
-                           letter = entry.toLowerCase();
-                           var found = false;
 
 
-                           for( var k =0; k < gl_tryletter.length; k++)
-                           {
-                                 if (letter === gl_tryletter[k])
-                                 {
-                                   found = true;
-                                 }
-                           }
+                                       var found = false;
 
-                           if (found)
-                           {
-                                 console.log(" found Number of tries: "+ gl_tries);
 
-                           }
-                           else {
-                                               var init = false;
-                                               for(var i =0; i < gl_word.length; i++)
-                                               {
-                                                 //console.log('letter inthe for loop : '+letter);
-                                                 //console.log('artisit letters : '+gl_word[i]);
-                                                 if ( letter === gl_word[i] )
-                                                 {
-                                                          var part1 = gl_answer.substring(0,i);
-                                                          var part2 = gl_answer.substring(i+1);
-                                                          //console.log('part1 : '+part1);
-                                                          //console.log('part2 : '+part2);
-                                                          var fulltext = part1.concat(letter,part2);
-                                                          gl_answer = fulltext;
-                                                          //console.log("full: "+fulltext);
-                                                          //console.log('Right Letter :  '+ gl_answer[i]);
-                                                          init = true;
-                                                   }
-
-                                               }
-                                            if (init)
+                                       for( var k =0; k < gl_tryletter.length; k++)
+                                       {
+                                             if (letter === gl_tryletter[k])
                                              {
-                                                  console.log('right letter guess : '+gl_answer);
-                                                    //gl_tries = gl_tries - 1 ;
+                                               found = true;
                                              }
-                                            else {
-                                                  gl_tryletter = gl_tryletter + letter;
-                                                 // console.log('tryletter : '+ gl_tryletter.length);
-                                                  gl_tries = gl_tries - 1 ;
-                                                  //console.log('try letter : '+ gl_tryletter);
-                                            }
+                                       }
 
-                                     }
-                                    //reset to next game
-                                    //console.log('the answer array : '+gl_answer);
-                                    //console.log('The artist : '+gl_word);
-                                    //console.log('The letters guessed array : '+gl_tryletter);
-                                    if (gl_answer === gl_word)
-                                    {
-                                            gl_win++;
-                                            gl_end = true;
-                                            var ht1 = document.getElementById("word");
-                                            ht1.innerHTML = gl_word;
-                                          //  alert("Congrats...");
-                                            display();
-                                    }
-                                    else if (gl_tries === 0) {
-                                            gl_lost++;
-                                            gl_end = true;
-                                            //alert("Ooops...");
-                                            display();
-                                    }
+                                       if (found)
+                                       {
+                                             console.log(" found Number of tries: "+ gl_tries);
 
-                                  var ht1 = document.getElementById("word");
-                                  var ht2 = document.getElementById("tguess");
-                                  var ht3 = document.getElementById('twin');
-                                  var ht4 = document.getElementById('tlost');
-                                  var ht5 = document.getElementById('letterguess');
-                                  ht1.innerHTML = gl_answer;
-                                  ht2.innerHTML = gl_tries;
-                                  ht3.innerHTML = gl_win;
-                                  ht4.innerHTML = gl_lost;
-                                  ht5.innerHTML = gl_tryletter;
+                                       }
+                                       else {
+                                                           var init = false;
+                                                           for(var i =0; i < gl_word.length; i++)
+                                                           {
+                                                             //console.log('letter inthe for loop : '+letter);
+                                                             //console.log('artisit letters : '+gl_word[i]);
+                                                             if ( letter === gl_word[i] )
+                                                             {
+                                                                      var part1 = gl_answer.substring(0,i);
+                                                                      var part2 = gl_answer.substring(i+1);
+                                                                      //console.log('part1 : '+part1);
+                                                                      //console.log('part2 : '+part2);
+                                                                      var fulltext = part1.concat(letter,part2);
+                                                                      gl_answer = fulltext;
+                                                                      //console.log("full: "+fulltext);
+                                                                      //console.log('Right Letter :  '+ gl_answer[i]);
+                                                                      init = true;
+                                                               }
 
-                                  if (gl_end) {
-                                    game();
-                                  }
+                                                           }
+                                                        if (init)
+                                                         {
+                                                              console.log('right letter guess : '+gl_answer);
+                                                                //gl_tries = gl_tries - 1 ;
+                                                         }
+                                                        else {
+                                                              gl_tryletter = gl_tryletter + letter;
+                                                             // console.log('tryletter : '+ gl_tryletter.length);
+                                                              gl_tries = gl_tries - 1 ;
+                                                              //console.log('try letter : '+ gl_tryletter);
+                                                        }
+
+                                                 }
+                                                //reset to next game
+                                                //console.log('the answer array : '+gl_answer);
+                                                //console.log('The artist : '+gl_word);
+                                                //console.log('The letters guessed array : '+gl_tryletter);
+                                                if (gl_answer === gl_word)
+                                                {
+                                                        gl_win++;
+                                                        gl_end = true;
+                                                        var ht1 = document.getElementById("word");
+                                                        ht1.innerHTML = gl_word;
+                                                      //  alert("Congrats...");
+                                                        display();
+                                                }
+                                                else if (gl_tries === 0) {
+                                                        gl_lost++;
+                                                        gl_end = true;
+                                                        //alert("Ooops...");
+                                                        display();
+                                                }
+
+                                              var ht1 = document.getElementById("word");
+                                              var ht2 = document.getElementById("tguess");
+                                              var ht3 = document.getElementById('twin');
+                                              var ht4 = document.getElementById('tlost');
+                                              var ht5 = document.getElementById('letterguess');
+                                              ht1.innerHTML = gl_answer;
+                                              ht2.innerHTML = gl_tries;
+                                              ht3.innerHTML = gl_win;
+                                              ht4.innerHTML = gl_lost;
+                                              ht5.innerHTML = gl_tryletter;
+
+                                              if (gl_end) {
+                                                game();
+                                              }
+                                }
+                                else {
+                                  console.log('Press Letters only!!!');
+                                }
                  }
 
 
