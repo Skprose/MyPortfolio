@@ -43,6 +43,11 @@
 
                 document.onkeyup = function(event)
                 {
+                  var codek = event.keyCode;
+                  console.log('codek + :'+codek);
+                  if ( (( codek > 64) && (codek < 91)) ||
+                     ((codek > 96) && (codek < 123)) )
+                     {
                            var entry = event.key;
                            console.log('Event key :'+entry);
                            var index = parseInt(Math.random()*26);
@@ -71,6 +76,7 @@
                           t2.innerHTML = game[index];
                           t3.innerHTML = win;
                           t4.innerHTML = lost;
+                       }      
                  }
 
     </script>
