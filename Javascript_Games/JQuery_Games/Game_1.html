@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JQuery Crystal Game</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- JQuery files link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--  <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script> -->
+    <link href = "game1style.css" type = "text/css"  rel = "stylesheet" />
+  </head>
+  <body>
+    <!-- HTML Section -->
+
+    <div class = "container">
+        <div class = "row">
+                  <h1>Crystal Collector</h1>
+                  <h5><a href = " ">Return Games Main Page</a>
+        </div>
+        <div class = "row">
+                 <h3>How to Play the Game</h3>
+                 <ol>
+                         <li>Each round the gem stones will have a new number value.</li>
+                        <li>The Total value you need to achive will be displayed.</li>
+                        <li>By Clicking the gem stones you get points.</li>
+                        <li>Your goal is to achieve the
+                          Total value displayed by guessing &amp; clicking the gem stones.</li>
+                          <li>You win if you reach Total value</li>
+                         <li>You loose if your value exceeds the Total Value.</li>
+                  </ol>
+        </div>
+        <div class = "row">
+                     <div class ="col-lg-4">
+                         <h3 id = "htwin">Wins : 0</h3>
+                      </div>
+                      <div class = "col-lg-4">
+                         <h3 id = "htloss">Losses : 0 </h3>
+                      </div>
+                      <div class = "col-lg-4">
+                          <h3 id = "htround">Round : 1 </h3>
+                      </div>
+        </div>
+        <br /> <br />
+        <div class = row>
+                 <div class = "heading" class = "col-lg-12">
+                      <h3>Collect Gem stones worth : </h3>
+                      <h3 id ="httotal">Total</h3>
+                 </div>
+        </div>
+        <div class = "row">
+                    <div class = "col-md-3">
+                            <button id = "htgem1" type = "button" class = "btn btn=-success btn-oval" value = 0>
+                                   <img src ="./Resources/opal.jpg" width = 200 height = 200 />
+                            </button>
+                    </div>
+                    <div class = "col-md-3">
+                              <but ton id = "htgem2" type = "button" class = "btn btn=-success btn-oval" value = 0>
+                                   <img src ="./Resources/topaz.jpg" width = 200 height = 200 />
+                              </button>
+                    </div>
+                    <div class = "col-md-3">
+                              <button id = "htgem3" type = "button" class = "btn btn=-success btn-oval" value = 0>
+                                    <img src ="./Resources/diamond.jpg" width = 200 height = 200 />
+                              </button>
+                    </div>
+                    <div class = "col-md-3">
+                              <button id = "htgem4" type = "button" class = "btn btn=-success btn-oval" value = 0>
+                                    <img src ="./Resources/amethyst.jpg" width = 200 height="200" />
+                              </button>
+                    </div>
+        </div>
+        <div class = "row">
+                   <span>You have so far collected Gem stones worth :<p id = "httot"></p></span>
+                   <h3 id ="htscore"></h3>
+                   <h2 id = "htcomment"></h2>
+
+        </div>
+    </div>
+
+
+    <script src = "game1script.js" type = "text/javascript"></script>
+  </body>
+</html>
