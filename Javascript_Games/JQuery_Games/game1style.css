@@ -1,0 +1,38 @@
+.row {
+
+  margin: 5px 0 5px 0;
+}
+buttton {
+  border: 3px solid black;
+}
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+
+
+.heading {
+  font-family: 'Lobster', cursive;
+  color:350, 94%, 19%;
+  background-color: #1AE1E1;
+  text-align: center;
+  font-size: 20px;
+  margin:10px;
+  border: 5px solid #4B1820;
+}
+.winloss {
+  font-family: 'Sedgwick Ave', cursive;
+  color: 350, 90%, 50%;
+  background-color: #1DA0F5;
+}
+#bottom {
+  font-family: 'Permanent Marker', cursive;
+
+}
+#gem {
+  background-color: #827678
+}
+
+#goal {
+  font-family: 'Montserrat', sans-serif;
+}

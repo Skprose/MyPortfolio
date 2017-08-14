@@ -19,7 +19,7 @@
                  $("#htgem1").on("click",function(){
                    $("#htscore").append(gem1 + " +   ");
                    score = score + gem1;
-                    $("#httot").html(score);
+                    $("#httot").html('You have collected Gemstone worth : ' + score);
                     console.log('score '+ score);
                     checkscore();
                  })
@@ -27,21 +27,21 @@
                    console.log('inside');
                    $("#htscore").append(gem2 + " + ");
                    score = score + gem2;
-                    $("#httot").html(score);
+                    $("#httot").html('You have collected Gemstone worth : ' + score);
                     console.log('score '+ score);
                     checkscore();
                  })
                  $("#htgem3").on("click",function(){
                    $("#htscore").append(gem3 + " + ");
                    score = score + gem3;
-                    $("#httot").html(score);
+                    $("#httot").html('You have collected Gemstone worth : '+ score);
                     console.log('score '+ score);
                     checkscore();
                  })
                  $("#htgem4").on("click",function(){
                    $("#htscore").append(gem4 + " + ");
                    score = score + gem4;
-                    $("#httot").html(score);
+                    $("#httot").html('You have collected Gemstone worth : '+ score);
                     console.log('score '+ score);
                     checkscore();
                })
@@ -52,7 +52,7 @@
            if ( score === totalvalue )
            {
                  win++;
-                 $("#htwin").html(win);
+                 $("#htwin").html('Wins : '+win);
                    console.log('Score is equal value')
                    nextround();
            }

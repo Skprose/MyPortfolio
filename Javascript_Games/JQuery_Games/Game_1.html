@@ -8,19 +8,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- JQuery files link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!--  <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat|Oswald|Permanent+Marker|Sedgwick+Ave" rel="stylesheet">
     <link href = "game1style.css" type = "text/css"  rel = "stylesheet" />
   </head>
   <body>
     <!-- HTML Section -->
 
     <div class = "container">
-        <div class = "row">
+        <div class = "heading" class = "row">
                   <h1>Crystal Collector</h1>
-                  <h5><a href = " ">Return Games Main Page</a>
+                  <h5><a href = "../index.html ">Return Games Main Page</a>
         </div>
         <div class = "row">
                  <h3>How to Play the Game</h3>
@@ -34,7 +31,7 @@
                          <li>You loose if your value exceeds the Total Value.</li>
                   </ol>
         </div>
-        <div class = "row">
+        <div class = "winloss" class = "row">
                      <div class ="col-lg-4">
                          <h3 id = "htwin">Wins : 0</h3>
                       </div>
@@ -46,13 +43,16 @@
                       </div>
         </div>
         <br /> <br />
-        <div class = row>
-                 <div class = "heading" class = "col-lg-12">
+        <div id = "goal" class = row>
+                 <div  class = "col-lg-6">
                       <h3>Collect Gem stones worth : </h3>
+
+                 </div>
+                 <div  class = "col-lg-6">
                       <h3 id ="httotal">Total</h3>
                  </div>
         </div>
-        <div class = "row">
+        <div id = "gem" class = "row">
                     <div class = "col-md-3">
                             <button id = "htgem1" type = "button" class = "btn btn=-success btn-oval" value = 0>
                                    <img src ="./Resources/opal.jpg" width = 200 height = 200 />
@@ -74,8 +74,8 @@
                               </button>
                     </div>
         </div>
-        <div class = "row">
-                   <span>You have so far collected Gem stones worth :<p id = "httot"></p></span>
+        <div id = " bottom" class = "row">
+                   <h3 id = "httot"></h3>
                    <h3 id ="htscore"></h3>
                    <h2 id = "htcomment"></h2>
 
