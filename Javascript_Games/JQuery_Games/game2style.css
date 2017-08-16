@@ -1,0 +1,9 @@
+body {
+//  background-image: url("./Resources/stwarsbackground.jpg");
+  background-size: cover;
+  background-position: bottom;
+
+}
+.jumbotron {
+  font-family: Lobster;
+}
