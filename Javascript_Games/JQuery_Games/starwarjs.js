@@ -207,27 +207,59 @@
                         {
                               $("#result").html('You Win!!!');
                               win = true;
-
-                              $("#instruct").html("Choose you Opponent to fight !!!");
-                              defeated[defeated.length - 1] = '';
+                              $("#enemycharacter").hide();
+                              defeated[defeated.length] = nowplaying;
                               $(".characters").show();
-                                gamecont();
+                              $("#instruct").html("Choose you Opponent to fight !!!");
+
+                              console.log('hide the character');
+
+                            //    gamecont();
 
                         }
                         else if (( myhealth < 1) && (myhealth < opphealth) && (opphealth > 0))
                         {
                               $("#result").html('You Loose!!!');
                               win = false;
-                              gamecont();
+                              $(".characters").show();
+                              $("#instruct").html("Choose you Opponent to fight !!!");
+                              console.log('hide the character');
+                              //gamecont();
+                        }
+                        else if ( (myhealth > opphealth) && (myhealth < 0))
+                        {
+                              $("#result").html('You Win!!!');
+                              win = true;
+                              $("#enemycharacter").hide();
+                              defeated[defeated.length] = nowplaying;
+
+
+                        }
+                        else if ( (myhealth < opphealth) && (opphealth < 0))
+                        {
+                              $("#result").html('You Loose!!!');
+                              win = false;
+                              $(".characters").show();
+                              $("#instruct").html("Choose you Opponent to fight !!!");
+                              console.log('hide the character');
                         }
               })
 
               function gamecont()
               {
 
+
+
+                     opphealth = 0;
+                     oppattack = 0;
+                       myhealth =  myhealth + ar_health[gl_imgarray.indexof(mycharacter)];
+                       var i = gl_imgarray.indexof(nowplaying);
+                       var imgid = "htchar"+i;
+                       $("#"imgid).hide()
+
                           if (win)
                           {
-                              $(instruct).html('Choose your next Opponent');
+                              $(instruct).html('Choose yoiur next Opponent');
                           }
               }
 
