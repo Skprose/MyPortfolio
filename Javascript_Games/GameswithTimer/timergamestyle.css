@@ -1,0 +1,14 @@
+header {
+  margin:10px;
+  width:100%;
+  height:120px;
+  text-align: center;
+  background-color: hsla(64, 0%, 39%, 1);
+  color:hsla(329, 26%, 0%, 1);
+  border: 10px solid #8e61ff;
+}
+.container {
+  margin:10px;
+
+
+}

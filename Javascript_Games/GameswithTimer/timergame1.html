@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Math Quiz</title>
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <link href = "timergamestyle.css" type ="text/css" rel = "stylesheet" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <header>
+       <h1>Math facts Quiz</h1>
+         <h4>Check how strong you are in Math</h4>
+    </header>
+    <div class = "container" id ="startbutton">
+       <button id = "start" class = "btn btn-success btn-block">Start the Game</button>
+    </div>
+    <div class = "container">
+         <div class = "panel panel-header">
+           <h3 id = "question">Choose one of the 4 option..click Start the Game</h3>
+         </div>
+         <div class = "panel panel-body" id = "options">
+                   <button id = "one" value = "1" class ="btn-info btn-block answer">Option 1</button>
+                   <button id = "two" value = "2" class ="btn-primary btn-block answer">Option 2</button>
+                   <button id = "three" value = "3" class ="btn-info btn-block answer">Option 3</button>
+                   <button id = "four" value = "4" class ="btn-primary btn-block answer">Option 4</button>
+         </div>
+         <div class = "panel panel-footer" id = "return">
+              <h4 id = "reply"></h4>
+              <div class = "row">
+                   <div class = "col col-lg-3">
+                        <p>Total Questions</p>
+                        <p id="totalqs"></p>
+                   </div>
+                   <div class = "col col-lg-3">
+                        <p>Answered Questions</p>
+                        <p id="answeredqs"></p>
+                   </div>
+                   <div class = "col col-lg-3">
+                        <p>Correct Answer</p>
+                        <p id="right"></p>
+                   </div>
+                   <div class = "col col-lg-3">
+                        <p>Wrong Answer</p>
+                        <p id="unaswqs"></p>
+                   </div>
+              </div>
+              <div class = "row">
+                    <div class = "col col-lg-12">
+                         <h3 id = "yesno"></h3>
+                         <h4 id = "dispanswer"></h4>
+                    </div>
+               </div>
+         </div>
+         <div class = "panel panel-header" id = "results">
+
+         </div>
+    </div>
+  <!--  <script type = "text/javascript" src = "triviagame.js"></script> -->
+  <script type = "text/javascript" src = "timergamejs.js"></script>
+  </body>
+</html>
