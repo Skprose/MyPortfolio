@@ -19,9 +19,8 @@ $(document).ready(function()
                 var unanswered = 10, answered = 0,timeleft = 0;
                 var count = 0, gotit = 0, lostit = 0;
                 var t1 = 0,qno = 0, rightanswer = 0;
-                var getsubscript;
-                var len = gamezoom.length;
-                console.log('len of game'+len);
+
+
 
                 //function
                 function display()
@@ -30,7 +29,7 @@ $(document).ready(function()
                              console.log(' i in if');
                              if ( i == 10 )
                              {
-                               result();
+                               resultsfunction();
                                console.log(' i in if'+i);
                              }
                             else
@@ -81,8 +80,12 @@ $(document).ready(function()
                 function resultsfunction()
                 {
                   console.log("hello in timeup function");
-                  $(".answer").attr(disable,true);
                   $("#question").text("Time up!!");
+                    //$("#options").empty();
+                    $("options").html("<h1>Total Question = 10"+
+                     "Answered = "+answered +
+                      "Correct = "+gotit+
+                      "Wrong = "+lostit);
                 }
                 function rightanswerdisp()
                 {
