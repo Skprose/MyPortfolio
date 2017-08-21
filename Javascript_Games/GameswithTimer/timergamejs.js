@@ -41,10 +41,12 @@ $(document).ready(function()
                              lostit = 0;
                              qno = 0;
                              rightanswer = 0;
+                             resultsfunction();
                              $("#options").show();
                              $("#footersection").show();
                              $("#startbutton").hide();
                              starttimer();
+                             clockdisplay.clockset();
                              console.log('after call to start timer');
                 }
 
@@ -73,34 +75,6 @@ $(document).ready(function()
                              }
                  }
 
-                  /*  function dynamiele()
-                    {
-
-                     var opt1button = $('<button>');
-                     var opt2button = $('<button>');
-                     var opt3button = $('<button>');
-                     var opt4button = $('<button>');
-                     opt1button.text(gamezoom[i][1]);
-                       opt2button.text(gamezoom[i][2]);
-                       opt3button.text(gamezoom[i][3]);
-                       opt4button.text(gamezoom[i][4]);
-                       opt1button.attr('value',1);
-                       opt2button.attr('value',2);
-                       opt3button.attr('value',3);
-                       opt4button.attr('value',4);
-                       opt1button.attr('id','one');
-                       opt1button.addClass('btn-primary btn-block answer');
-                       opt2button.addClass('btn-info btn-block answer');
-                       opt3button.addClass('btn-primary btn-block answer');
-                       opt4button.addClass('btn-info btn-block answer');
-                       $("#options").html(opt1button);
-                       $("#options").append(opt2button);
-                       $("#options").append(opt3button);
-                       $("#options").append(opt4button);
-                     }*/
-
-
-
                 function starttimer()
                 {
                     t1 = setTimeout(timerout, 20000);
@@ -116,6 +90,7 @@ $(document).ready(function()
                   $("#dispanswer").text(" ");
                   $("#yesno").text(" ");
                   clearInterval(t1);
+                  clockdisplay.resetclock();
                 }
                 function timerout()
                 {
@@ -144,6 +119,7 @@ $(document).ready(function()
                 $("#start").on("click", function ()
                 {
                       reset();
+
                       display();
                       $("#totalqs").html("10");
                       console.log('inside start');
@@ -173,4 +149,40 @@ $(document).ready(function()
                         console.log('lostit',lostit);
                      }
                 });
+                // To Display clock
+                var clockdisplay =
+                {
+                    disptimer : 0,
+                    timercount : 0,
+                    clockset: function()
+                    {
+                        clockdisplay.disptimer = setInterval(clockdisplay.myclock,1000);
+                       //displaytimer
+                        clockdisplay.timercount = 0;
+                        $("#htclock").text("00:00");
+                    },
+                    myclock: function ()
+                    {
+                      clockdisplay.timercount++;
+                      var m = Math.floor(clockdisplay.timercount / 60);
+                      var s = clockdisplay.timercount - (m * 60);
+                      if ( s < 10)
+                      {
+                        s = "0" +s ; //this if section to make it appear as 2 digits00
+                      }
+                      if (( m < 10)||(m === 0))
+                      {
+                        m = '0'  + m ;
+                      }
+                      var str = m+":"+s ;
+                      $("#htclock").text(str);
+                    },
+                    resetclock: function ()
+                    {
+                     //displaytimer
+                      clockdisplay.timercount = 0;
+                      clearInterval(clockdisplay.disptimer);
+
+                    }
+                }
 });

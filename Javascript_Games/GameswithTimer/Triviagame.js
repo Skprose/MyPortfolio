@@ -19,6 +19,14 @@ $(document).ready(function(){
         //functions
         function display()
         {
+            for(var i =1;i <11 ;i++)
+            {
+              for (var k =0;k<5;k++)
+              {
+                var subscript = "q"+i+"details"+[k];
+                console.log(game:subscript);
+              }
+            }
 
         }
         function results()

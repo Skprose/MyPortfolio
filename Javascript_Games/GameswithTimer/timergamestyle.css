@@ -10,10 +10,12 @@ header {
   color:hsla(329, 26%, 0%, 1);
   border: 10px solid #003366;
   padding:20px;
+  font-family: 'Baloo Bhaijaan', cursive;
 }
 a {
   color:hsla(329, 26%, 0%, 1);
    text-decoration: underline;
+   font-family: 'Poppins', sans-serif;
 }
 .container {
   margin:10px 10px 10 50px;
@@ -21,8 +23,10 @@ a {
 }
 p {
   font-size: 18px;
+  font-family: 'Acme', sans-serif;
 }
 button {
    padding:20px;
    margin:20px;
+   font-family: 'Arvo', serif;
 }
