@@ -1,3 +1,6 @@
+body{
+  align-content: center;
+}
 header {
   margin:10px;
   width:100%;
@@ -13,5 +16,13 @@ a {
    text-decoration: underline;
 }
 .container {
-  margin:10px;
+  margin:10px 10px 10 50px;
+  padding:10px;
+}
+p {
+  font-size: 18px;
+}
+button {
+   padding:20px;
+   margin:20px;
 }

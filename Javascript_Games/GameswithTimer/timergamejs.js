@@ -3,22 +3,50 @@
 $(document).ready(function()
 {
                 //Global Variables
-                var gamezoom = [
-                  ['(Length * width) is the forumal for...','Area of Square','Area of Rectangle','Perimeter of Square','Perimeter of Rectangle',2] ,
-                  ['{a^2} is the formula for...','Area of Square','Area of Rectangle','Perimeter of Square','Perimeter of Rectangle',2],
-                  ['(h/2(b1+b2)) is the formula for... ','Area of a Trapezoid','Area of Polygon','Area of Rectangle','Area of Square',1],
-                  ['(Length * width) is the formula for...','Area of parallelogram ','Area of Ellipse','Area of Equilateral Triangle','Area of triangle',1],
-                  ['(pi * r1 * r2) is the formula for...','Area of Trapezoid','Area of Ellipse','Area of Equliateral Triangle','Area of a Circle',2],
-                  ['(pi * r^2) is the formula for..','Area of Square','Perimeter of Rectangle','Area of Triangle','Area of Circle',4],
-                  ['(3*sides) is the formula for...','Perimeter of a Square','Perimeter of a Rectangle','Perimeter of a Triangle','Perimeter of a Equilateral Triangle',4],
-                  ['(4a) is the formula for(a is the side) ...','Perimeter of a Square','Perimeter of a Rectangle','Perimeter of Triangle','Area of a trapezoid',1],
-                  ['(a+2b) is the formula for...','Perimeter of a Square','Perimeter of a Isoceles Triangle','Perimeter of a Triangle','Perimeter of a trapezoid',3],
-                  ['(ba /2) is the formula for ','Area of Square','Area of Rectangle','Are of Right Triangle','Area of trapezoid',3],
-                ];
+                var gamezoom = [];
+                var unanswered = 0;
+                var  answered = 0;
+                var timeleft = 0;
+                var count = 0;
+                var gotit = 0;
+                var lostit = 0;
+                var t1 = 0; //timer
+                var qno = 0;
+                var rightanswer = 0;
+                // just for first time
+                $("#options").hide();
+                $("#footersection").hide();
+                console.log('hiding for first time');
 
-                var unanswered = 10, answered = 0,timeleft = 0;
-                var count = 0, gotit = 0, lostit = 0;
-                var t1 = 0,qno = 0, rightanswer = 0;
+                function reset()
+                {
+                             gamezoom = [
+                              ['(Length * width) is the forumal for...','Area of Square','Area of Rectangle','Perimeter of Square','Perimeter of Rectangle',2] ,
+                              ['{a^2} is the formula for...','Area of Square','Area of Rectangle','Perimeter of Square','Perimeter of Rectangle',2],
+                              ['(h/2(b1+b2)) is the formula for... ','Area of a Trapezoid','Area of Polygon','Area of Rectangle','Area of Square',1],
+                              ['(Length * width) is the formula for...','Area of parallelogram ','Area of Ellipse','Area of Equilateral Triangle','Area of triangle',1],
+                              ['(pi * r1 * r2) is the formula for...','Area of Trapezoid','Area of Ellipse','Area of Equliateral Triangle','Area of a Circle',2],
+                              ['(pi * r^2) is the formula for..','Area of Square','Perimeter of Rectangle','Area of Triangle','Area of Circle',4],
+                              ['(3*sides) is the formula for...','Perimeter of a Square','Perimeter of a Rectangle','Perimeter of a Triangle','Perimeter of a Equilateral Triangle',4],
+                              ['(4a) is the formula for(a is the side) ...','Perimeter of a Square','Perimeter of a Rectangle','Perimeter of Triangle','Area of a trapezoid',1],
+                              ['(a+2b) is the formula for...','Perimeter of a Square','Perimeter of a Isoceles Triangle','Perimeter of a Triangle','Perimeter of a trapezoid',3],
+                              ['(ba /2) is the formula for ','Area of Square','Area of Rectangle','Are of Right Triangle','Area of trapezoid',3],
+                            ];
+
+                             unanswered = 10;
+                             answered = 0;
+                             timeleft = 0;
+                             count = 0;
+                             gotit = 0;
+                             lostit = 0;
+                             qno = 0;
+                             rightanswer = 0;
+                             $("#options").show();
+                             $("#footersection").show();
+                             $("#startbutton").hide();
+                             starttimer();
+                             console.log('after call to start timer');
+                }
 
 
 
@@ -27,10 +55,11 @@ $(document).ready(function()
                 {
                              var i = qno;
                              console.log(' i in if');
-                             if ( i == 10 )
+                             if ( parseInt(i) === parseInt(10) )
                              {
-                               resultsfunction();
+                               $("#question").text("Quiz Over!!");
                                console.log(' i in if'+i);
+                               resultsfunction();
                              }
                             else
                              {
@@ -44,7 +73,7 @@ $(document).ready(function()
                              }
                  }
 
-                    function dynamiele()
+                  /*  function dynamiele()
                     {
 
                      var opt1button = $('<button>');
@@ -68,31 +97,40 @@ $(document).ready(function()
                        $("#options").append(opt2button);
                        $("#options").append(opt3button);
                        $("#options").append(opt4button);
-                     }
+                     }*/
 
 
 
                 function starttimer()
                 {
-                    t1 = setTimeout(resultsfunction, 15000);
+                    t1 = setTimeout(timerout, 20000);
 
                 }
                 function resultsfunction()
                 {
-                  console.log("hello in timeup function");
+
+                  $("#options").hide();
+                  result();
+                  $("#startbutton").show();
+                  $("#start").text("Restart Game");
+                  $("#dispanswer").text(" ");
+                  $("#yesno").text(" ");
+                  clearInterval(t1);
+                }
+                function timerout()
+                {
                   $("#question").text("Time up!!");
-                    //$("#options").empty();
-                    $("options").html("<h1>Total Question = 10"+
-                     "Answered = "+answered +
-                      "Correct = "+gotit+
-                      "Wrong = "+lostit);
+                  console.log("hello in timerout function");
+                  resultsfunction();
                 }
                 function rightanswerdisp()
                 {
-                         $("#dispanswer").html()
+                         var text =  gamezoom[qno][rightanswer];
+                         $("#dispanswer").html(text)
                          qno++;
                          result();
                          display();
+
                 }
                 function result()
                 {
@@ -105,8 +143,8 @@ $(document).ready(function()
 
                 $("#start").on("click", function ()
                 {
+                      reset();
                       display();
-                      starttimer();
                       $("#totalqs").html("10");
                       console.log('inside start');
                 });
@@ -124,12 +162,12 @@ $(document).ready(function()
                      if ( parseInt(entry) === parseInt(rightanswer))
                      {
                        gotit++;
-                       $("#yesno").html = "YES";
+                       $("#yesno").html("YES! you got it");
                        rightanswerdisp();
                      }
                      else {
                         lostit++;
-                        $("#yesno").html = "NO";
+                        $("#yesno").html("NO! missed it");
                         rightanswerdisp();
                         console.log('gotit',gotit);
                         console.log('lostit',lostit);
