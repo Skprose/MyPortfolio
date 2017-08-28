@@ -77,7 +77,7 @@ $(document).ready(function()
 
                 function starttimer()
                 {
-                    t1 = setTimeout(timerout, 20000);
+                    t1 = setTimeout(timerout, 50000);
 
                 }
                 function resultsfunction()

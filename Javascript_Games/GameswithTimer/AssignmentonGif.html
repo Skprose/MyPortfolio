@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <meta charset="utf-8">
+        <title>API Request and fetching Gif files</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!--<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>-->
+
+  </head>
+  <body>
+          <div class = "jumbotron">
+               <h1>Using GIPHY API</h1>
+          </div>
+          <div class = "container">
+                <h4>This Web page displays Giphy files which are rated 'g' only</h4>
+
+          </div>
+          <div class = "container">
+               <form id = "inputtext">
+                    <div class = "form-group">
+                         <label for = "Search">Enter Search Words you want to add to list</label>
+                         <input type ="searchtxt" id = "search" class = "form-control"><br /><br />
+                         <button class = "btn btn-warning btn-block" id ="getit">Submit</button>
+                    </div>
+               </form>
+               <form id = "First-form">
+
+               </form>
+               <br /><br />
+               <form id = "Second-form">
+               </form>
+
+          </div>
+          <br /><br />
+          <div class = "container" id = "vfiles"></div>
+          <script type = "text/javascript" src = "assignmentgifjs.js"></script>
+  </body>
+</html>
