@@ -17,7 +17,7 @@ function dynamicadd()
 
           var  additem = (`<input id = "${i}option"
           class = "optionvalue" name ="name${i}"
-          type = "radio"
+          type = "checkbox"
           value = "${gl_items[i]}" > ${gl_items[i]}<br />`);
           //divele.append(string);
             $("#First-form").append(additem);
@@ -30,7 +30,7 @@ function callapigifvid(searchstr)
 {
       //Api call
           var querstr1 = "http://api.giphy.com/v1/gifs/search?api_key=01f8ebd24dd04b98b407dd4b30d3443e" ;
-            var querstr2 = "&q="+ searchstr +"&limit=50&offset=0&rating=G&lang=en";
+            var querstr2 = "&q="+ searchstr +"&limit=1&offset=0&rating=G&lang=en";
             //var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=01f8ebd24dd04b98b407dd4b30d3443e&q=stars&limit=25&offset=0&rating=G&lang=en";
             var queryURL = querstr1 + querstr2 ;
             console.log(querstr1+querstr2);
@@ -52,9 +52,10 @@ function callapigifvid(searchstr)
                 var in2 = img_array[i].images.fixed_height_small_still.url ;
                 var ifrele = $("<iframe>");
                 ifrele.attr("src",in1);
+                
                 $("#vfiles").append(ifrele);
-                gl_imgvidurl[gl_imgvidurl.length] = in1;
-                gl_imgurl[gl_imgurl.length] = in2;
+            //    gl_imgvidurl[gl_imgvidurl.length] = in1;
+              //  gl_imgurl[gl_imgurl.length] = in2;
 
               } //end of for
             });//end of ajax response
@@ -62,20 +63,30 @@ function callapigifvid(searchstr)
 }
 // adding the search string
 $("#First-form").on("click","input",function(){
-    if ( gl_searchfor === null)
-    {
-      gl_searchfor = this.value ;
-      callapigifvid(gl_searchfor);
+  var yesno = this.checked ;
+  console.log('checked or not',yesno);
+  if (yesno)
+   {
+         console.log("it is checked",yesno)
+          if ( gl_searchfor === null)
+          {
+            gl_searchfor = this.value ;
+            callapigifvid(gl_searchfor);
 
-    }
-    else {
-          gl_searchfor = gl_searchfor+"+"+this.value ;
-          console.log('search str',gl_searchfor);
-          callapigifvid(gl_searchfor);
+          }
+          else {
+                gl_searchfor = gl_searchfor+"+"+this.value ;
+                console.log('intheelse');
+                console.log('search str',gl_searchfor);
+                callapigifvid(gl_searchfor);
+                }
+     }
+     else {
+          console.log("it is checked",yesno)
 
-    }
+     }
 
-})
+});
 
 
 //Main Programming
