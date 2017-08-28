@@ -16,6 +16,7 @@ function dynamicadd()
           type = "checkbox"
           value = "${gl_items[i]}" > ${gl_items[i]}<br />`);
           $("#First-form").append(additem);
+          //console.log("value is",additem.attr(value));
         }
 
 }
@@ -49,12 +50,10 @@ function callapigifvid(searchstr)
       //Api call
           var querstr1 = "https://api.giphy.com/v1/gifs/search?api_key=01f8ebd24dd04b98b407dd4b30d3443e" ;
           var noofgifs = gl_rows;
-          var var_rating = gl_rating; //"G"; // need to improvize having a drop down input
+          var var_rating = gl_rating;
             var querstr2 = "&q="+ searchstr +"&limit="+noofgifs+"&offset=0&rating="+gl_rating+"&lang=en";
-            //var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=01f8ebd24dd04b98b407dd4b30d3443e&q=stars&limit=25&offset=0&rating=G&lang=en";
             var queryURL = querstr1 + querstr2 ;
             console.log(querstr1+querstr2);
-            //$("#vfiles").html("");
             var category = searchstr;
             $.ajax({
               url : queryURL ,
@@ -71,7 +70,8 @@ function callapigifvid(searchstr)
                 var in1 = img_array[i].images.fixed_height.url ;
                 var in2 = img_array[i].images.fixed_height_still.url ;
                 var ifrele = $("<img>");
-                ifrele.addClass(".videos");
+              //  ifrele.addClass(".videos");
+                ifrele.addClass(`${searchstr}`);
                 ifrele.attr("video-file",in1);
                 ifrele.attr("image-file",in2);
                 ifrele.attr("status","movie");
@@ -87,29 +87,22 @@ function callapigifvid(searchstr)
 // adding the search string
 $("#First-form").on("click","input",function()
 {
-     var yesno = this.checked ;
+    //var removestr =[] ;
+    //console.log('deletestr before if checking is :'+removestr); //this does not get printed
+       var yesno = this.checked ;
      console.log("yesno :",yesno);
      if (yesno)
      {
-         console.log("yesno in if part:",yesno);
-
-           if ( gl_searchfor === null)
-           {
-             gl_searchfor = this.value ;
-             callapigifvid(gl_searchfor);
-             //callapi(gl_searchfor);
-           }
-           else {
-                 gl_searchfor = this.value ;
-                 console.log('search str',gl_searchfor);
-                 callapigifvid(gl_searchfor);
-                 //callapi(gl_searchfor);
-           }
+           console.log("yesno in if part:",yesno);
+           gl_searchfor = this.value ;
+           console.log('search str',gl_searchfor);
+           callapigifvid(gl_searchfor);
      }
      else {
-          var deletestr = this.value;
+          var removestr = this.value ;
+          console.log("deletestr is :"+removestr); // this statement is ignored
           console.log("yesno in else part :",yesno);
-
+          $(`.${removestr}`).remove();
      }
 
 });
@@ -130,13 +123,12 @@ $("#vfiles").on("click","img",function(event)
             var change = $(this).attr('image-file');
             $(this).attr('src',change);
             $(this).attr('status','pic');
-
           }
 });
 $("#Second-form").on("click","input",function(event){
           //event.preventDefault();
           gl_rows = this.value ;
-})
+});
 
 
 //Main Programming
@@ -200,3 +192,4 @@ this.attr("src",gl_imgurl[ind1]); */
             //$("#iputtext").on("change",function(event){
 
             //})
+            //var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=01f8ebd24dd04b98b407dd4b30d3443e&q=stars&limit=25&offset=0&rating=G&lang=en";
