@@ -13,6 +13,6 @@ body{
 #First-form h4 {
   border-bottom: 1px solid black;
 }
-#Second-form h4 {
+.col h4 {
   border-bottom: 1px solid black;
 }
