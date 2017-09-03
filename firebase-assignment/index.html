@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+            <meta charset="utf-8">
+            <title>Firebase - Assignment</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+            <!-- Firebase Reference -->
+            <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+            <!-- Moment.js Reference -->
+            <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
+            <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+            <!-- Custom CSS style -->
+            <link rel = "stylesheet" href="styleinfo.css" type="text/css" />
+  </head>
+  <body>
+    <div class ="jumbotron">
+       <h1>Train Schedule</h1>
+       <h4>Firebase Assignment</h4>
+       <h6>Return to Assignments Menu</h6>
+    </div>
+    <div class = "panel panel-default">
+          <div class = "panel-heading">
+             <h3>Train Schedule</h3>
+          </div>
+          <div class = "panel-body">
+            <table>
+            </table>
+          </div>
+    </div>
+    <div class = "panel panel-default">
+          <div class = "panel-heading">
+             <h3>Add Train Details</h3>
+          </div>
+          <div class = "panel-body">
+            <form id = "enterdetails">
+                <div class = "form-group">
+                    <label>Train Name</label>
+                    <input type = "text" id = "input-train-name"><br /><br />
+                </div>
+                <div class = "form-group">
+                    <label>Destination</label>
+                    <input type = "text" id = "input-train-name"><br /><br />
+                </div>
+                <div class = "form-group">
+                    <label>First Train Time</label>
+                    <input type = "text" id = "input-train-name"><br /><br />
+                </div>
+                <div class = "form-group">
+                    <label>Frequency</label>
+                    <input type = "text" id = "input-train-name"><br /><br />
+                </div>
+                <button class = "btn btn-large btn-info" id = "submit">Submit Train Details</button>
+            </form>
+          </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script type ="text/javascript" src ="firebaselogicjs.js"> </script>
+  </body>
+</html>

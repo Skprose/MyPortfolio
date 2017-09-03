@@ -1,0 +1,13 @@
+.jumbotron {
+  text-align: center;
+  background-color: #5f9ea0;
+  margin: 10px;
+  padding: 10px;
+}
+.panel{
+  margin: 20px;
+  padding: 10px;
+}
+.panel h3 {
+  background-color: #5f9ea0;
+}
