@@ -3,24 +3,27 @@ console.log('inside javascript');
 
 
         var database = firebase.database();
+        var gl_counter = 0;
 //Display values on Tables
         database.ref().on("child_added",function(snapshot)
           {
             console.log('Inside database ref call');
             console.log(snapshot.val());
+            gl_counter++ ;
             var lenofstr =  snapshot.val();
+            console.log('global counter :'+gl_counter);
             var tname = snapshot.val().trainname;
             var tdest = snapshot.val().traindestination;
             var ttime = snapshot.val().trainnextarrival;
             var tfreq = snapshot.val().minsaway;
             var insertstr =
-            `<tr class = "tr_rec"'><td>${tname}
-            </td><td>${tdest}
-            </td><td>${ttime}
-            </td><td>${tfreq}
-            </td><td>${tfreq}
-            </td><td><button class = "btn btn-warning btn-md" class = "update-button">Update</button>
-            </td><td><button class = "btn btn-danger btn-md" class = "delete-button">Delete</button>
+            `<tr id = 'row${gl_counter}' class = "tr_rec"'><td id ='namet${gl_counter}'>${tname}
+            </td><td id = 'dest${gl_counter}'>${tdest}
+            </td><td id ='ftime${gl_counter}'>${ttime}
+            </td><td id ='freq${gl_counter}'>${tfreq}
+            </td><td id ='nextt${gl_counter}'>${tfreq}
+            </td><td><button id ='upt${gl_counter}' class = "btn btn-warning btn-md" class = "update-button">Update</button>
+            </td><td><button id ='delbt${gl_counter}' class = "btn btn-danger btn-md" class = "delete-button">Delete</button>
             </td></tr>`;
             console.log('the adding item is insertstr',insertstr);
             $("#listoftrainschedule").append(insertstr);
@@ -41,7 +44,7 @@ console.log('inside javascript');
           $("#input-train-name").val("");
           $("#input-destination").val("");
           $("#input-train-time").val("");
-          $("input-train-frequency").val("");
+          $("#input-train-frequency").val("");
         }
 // Adding Train Details
         $("#submit-button").on("click",function()
@@ -63,3 +66,13 @@ console.log('inside javascript');
             });
             clearall();
         });
+  // for the update button
+
+  $(".delete-button").on("click",function(){
+
+  });
+
+// for delete button
+  $(".update-button").on("click",function(){
+
+});
