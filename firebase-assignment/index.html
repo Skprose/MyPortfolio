@@ -27,7 +27,7 @@
              <h3>Train Schedule</h3>
           </div>
           <div class = "panel-body">
-            <table>
+            <table id ="listoftrainschedule">
             </table>
           </div>
     </div>
@@ -43,22 +43,35 @@
                 </div>
                 <div class = "form-group">
                     <label>Destination</label>
-                    <input type = "text" id = "input-train-name"><br /><br />
+                    <input type = "text" id = "input-destination"><br /><br />
                 </div>
                 <div class = "form-group">
-                    <label>First Train Time</label>
-                    <input type = "text" id = "input-train-name"><br /><br />
+                    <label>Hours</label>
+                    <input type = "text" id = "input-train-time"><br /><br />
                 </div>
                 <div class = "form-group">
                     <label>Frequency</label>
-                    <input type = "text" id = "input-train-name"><br /><br />
+                    <input type = "text" id = "input-train-frequency"><br /><br />
                 </div>
-                <button class = "btn btn-large btn-info" id = "submit">Submit Train Details</button>
+                <button id = "submit-button" class = "btn btn-large btn-info">Submit Train Details</button>
             </form>
           </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    <script type ="text/javascript" src ="firebaselogicjs.js"> </script>
+    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyD3USkz89ss_ersK00EnqnxWlbyswzabM0",
+        authDomain: "trainschedule-aa9c7.firebaseapp.com",
+        databaseURL: "https://trainschedule-aa9c7.firebaseio.com",
+        projectId: "trainschedule-aa9c7",
+        storageBucket: "trainschedule-aa9c7.appspot.com",
+        messagingSenderId: "1024576495782"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script type ="text/javascript" src ="./firebaselogicjs.js"> </script>
   </body>
 </html>
