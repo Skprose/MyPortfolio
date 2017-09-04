@@ -20,58 +20,114 @@
     <div class ="jumbotron">
        <h1>Train Schedule</h1>
        <h4>Firebase Assignment</h4>
-       <h6>Return to Assignments Menu</h6>
+       <h6><a href = "../index.html">Return to Assignments Menu</a></h6>
     </div>
-    <div class = "panel panel-default">
-          <div class = "panel-heading">
-             <h3>Train Schedule</h3>
-          </div>
-          <div class = "panel-body">
-            <table id ="listoftrainschedule">
-            </table>
-          </div>
-    </div>
+    <div class = "container">
+            <div class = "panel-heading">
+              <h3 id="ts" >Train Schedule</h3>
+           </div>
+           <div class = "panel-body">
+                  <table class = "table table-hover">
+                       <thead>
+                           <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>First Train</th>
+                                <th>Frequency</th>
+                                <th>Next Train</th>
+                           </tr>
+                      </thead>
+                      <br /><br />
+                      <tbody id ="listoftrainschedule">
+
+                      </tbody>
+                   </table>
+           </div>
+   </div>
+
     <div class = "panel panel-default">
           <div class = "panel-heading">
              <h3>Add Train Details</h3>
           </div>
+
           <div class = "panel-body">
             <form id = "enterdetails">
-                <div class = "form-group">
+                <div  class = "form-group">
                     <label>Train Name</label>
                     <input type = "text" id = "input-train-name"><br /><br />
                 </div>
-                <div class = "form-group">
+                <div  class = "form-group">
                     <label>Destination</label>
                     <input type = "text" id = "input-destination"><br /><br />
                 </div>
                 <div class = "form-group">
-                    <label>Hours</label>
-                    <input type = "text" id = "input-train-time"><br /><br />
+                      <label>First Train</label>
                 </div>
-                <div class = "form-group">
+                <div  class = "row">
+                     <div class = "col col-md-4">
+                          <label>Hours</label>
+                          <select id = "input-train-time-hours">
+                               <option value = "1">1</option>
+                              <option value = "2">2</option>
+                              <option value = "3">3</option>
+                              <option value = "4">4</option>
+                              <option value  = "5" selected>5</option>
+                              <option value = "6">6</option>
+                              <option value = "7">7</option>
+                              <option value = "8">8</option>
+                              <option value = "9">9</option>
+                              <option value = "10">10</option>
+                              <option value = "11">11</option>
+                              <option value = "12">12</option>
+                          </select>
+                    </div>
+                    <div class = "col col-md-4">
+                        <label>Minutes</label>
+                        <input type = "text" id = "input-train-time-minutes" min="1" and max = "59"><br /><br />
+                     </div>
+                     <div class = "col col-md-4">
+                          <label>AM/PM</label>
+                          <select id = "ampm">
+                             <option value ="am">AM</option>
+                             <option value ="pm">PM</option>
+                          </select>
+                      </div>
+                </div>
+                <div  class = "form-group">
                     <label>Frequency</label>
-                    <input type = "text" id = "input-train-frequency"><br /><br />
+                    <select id = "input-train-frequency">
+                         <option value = "5">5</option>
+                        <option value = "10">10</option>
+                        <option value = "15">15</option>
+                        <option value = "20">20</option>
+                        <option value = "25">25</option>
+                        <option value = "30">30</option>
+                        <option value = "35">35</option>
+                        <option value = "40">40</option>
+                        <option value = "45">45</option>
+                        <option value = "50">50</option>
+                        <option value = "55">55</option>
+                   </select>
                 </div>
+
                 <button id = "submit-button" class = "btn btn-large btn-info">Submit Train Details</button>
             </form>
           </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyD3USkz89ss_ersK00EnqnxWlbyswzabM0",
-        authDomain: "trainschedule-aa9c7.firebaseapp.com",
-        databaseURL: "https://trainschedule-aa9c7.firebaseio.com",
-        projectId: "trainschedule-aa9c7",
-        storageBucket: "trainschedule-aa9c7.appspot.com",
-        messagingSenderId: "1024576495782"
-      };
-      firebase.initializeApp(config);
-    </script>
-    <script type ="text/javascript" src ="./firebaselogicjs.js"> </script>
+     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBAaoXjxqfvRp_PsHKL8W6UvAd_lyiJ81s",
+          authDomain: "traintimings-97e27.firebaseapp.com",
+          databaseURL: "https://traintimings-97e27.firebaseio.com",
+          projectId: "traintimings-97e27",
+          storageBucket: "traintimings-97e27.appspot.com",
+          messagingSenderId: "200037201060"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script type ="text/javascript" src ="./firebaselogicjs.js"> </script>
   </body>
 </html>

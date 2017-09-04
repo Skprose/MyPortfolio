@@ -1,4 +1,4 @@
-  .jumbotron {
+ .jumbotron {
   text-align: center;
   background-color: #5f9ea0;
   margin: 10px;
@@ -19,6 +19,7 @@ th {
 td{
   margin:30px;
   padding:30px;
+
 }
 #ts {
   font-style: italic;
