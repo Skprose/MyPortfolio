@@ -8,6 +8,7 @@ console.log('inside javascript');
         var gl_ampm = "am";
         var gl_freq = "10";
         var gl_mins = "15";
+
 //input validation
         function inputvalidation()
         {
@@ -30,7 +31,7 @@ console.log('inside javascript');
           $("#input-train-time-minutes").value = gl_mins;
           $("#ampm").value = gl_ampm ;
           $("#input-train-frequency").value = gl_freq;
-
+          $("#disp-next-train").val("");
         }
 // Adding Train Details
         $("#submit-button").on("click",function()
@@ -60,71 +61,120 @@ $("#input-train-frequency").on("change",function()
     console.log("inside input change");
     gl_freq = this.value;
       console.log('frequency'+gl_freq);
-    var str = nxttrain(gl_hours,gl_mins,gl_freq);
+    var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
     console.log('this is string',str);
-    $("#disp-next-train").text(str);
+    $("#disp-next-train").val(str);
 });
 $("#input-train-time-hours").on("change",function(){
   gl_hours = this.value;
   console.log('gl hour'+gl_hours);
+  /*var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+  console.log('this is string',str);
+  $("#disp-next-train").val(str);*/
+
 });
 
 $("#ampm").on("change",function(){
   gl_ampm = this.value;
   console.log("ampm"+gl_ampm);
+/*  var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+  console.log('this is string',str);
+  $("#disp-next-train").val(str);*/
 });
 
 $("#input-train-time-minutes").on("change",function(){
   gl_mins = this.value;
   console.log('gl mins'+gl_mins);
+  /*var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+  console.log('this is string',str);
+  $("#disp-next-train").val(str);*/
 });
 
 // next train
-function nxttrain(hours,mins,freq)
-{
-                //now values
-                  var now =  moment().format('LLLL');
-                  var vyear = moment().get('year');
-                  var vdate = moment().get('date');
-                  var vhour = moment().get('hour');
-                  var vminute = moment().get('minute');
-                  var vsecond = moment().get('second');
-                   console.log('year',vyear)  ;
-                   console.log('date',vdate)  ;
-                   console.log('hour',vhour)  ;
-                   console.log('mins',vminute)  ;
-                   console.log('secs',vsecond)  ;
-                   console.log('year',vyear)  ;
+function nxttrain(hours,mins,ampm,freq)
+        {
 
-                //rows - data values
-                  var tmintoadd = freq;
-                  var stmins = mins;
-                  var sthours = hours;
-                  console.log("to add",tmintoadd);
-                  //counting
-                  var temphour = hours;
-                  var tempmins = mins;
-                  var tempampm;
-                  while( (temphour <= sthours) && (tempmins <= stmins))
-                  {
-                    tempmins = tempmins + tmintoadd;
-                    if ( tempmins > 59)
-                    {
-                      temphour++;
-                      tempmins = tempmins - 60;
-                    }
-                  }
-                  if ( temphour > 12)
-                  {
-                    temphour = temphour - 12;
-                    tempampm = "pm";
-                  }
-                  else {
-                    tempampm = "am";
-                  }
-                return(temphour+":"+tempmins+tempampm);
-}
+              console.log('parameter hour',hours);
+               console.log('parameter mins',mins);
+                console.log('parameter ampm',ampm);
+                 console.log('parameter freqr',freq);
+              //now values
 
+                var now =  parseInt(moment().format('LLLL'));
+                var vyear = parseInt(moment().get('year'));
+                var vdate = parseInt(moment().get('date'));
+                var vhour = parseInt(moment().get('hour'));
+                var vminute = parseInt(moment().get('minute'));
+                var vsecond = parseInt(moment().get('second'));
+                 console.log('Now year',vyear)  ;
+                 console.log('Now date',vdate)  ;
+                 console.log('Now hour',vhour)  ;
+                 console.log('Now mins',vminute)  ;
+                 console.log('Now secs',vsecond)  ;
+                 console.log('Now year',vyear)  ;
+
+              //rows - data values
+
+                var stmins = mins;
+                var sthours = hours;
+                var tampm = ampm;
+
+
+                //counting
+                var temphour = parseInt(hours);
+                var tempmins = parseInt(mins);
+                var tempampm = parseInt(ampm);
+                var tmintoadd = parseInt(freq);
+                if (tempampm === "pm")
+                {
+                  temphour = temphour+12;
+                  console.log('Hour is if',temphour);
+
+                }
+                else
+                {
+                  console.log('Hour is',temphour);
+                }
+
+
+
+                while((temphour <= vhour) )
+                {
+                      console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
+
+                      tempmins = tempmins + tmintoadd;
+                      console.log('minutes addition'+tempmins+':::'+tmintoadd);
+
+                      if ( tempmins > 59)
+                      {
+                        temphour++;
+                        tempmins = tempmins - 60;
+                        console.log('if part time :'+temphour+":"+tempmins);
+                      }
+                      else if(tempmins === 60)
+                      {
+                        temphour++
+                        tempmins = 00;
+                        console.log('else part time :'+temphour+":"+tempmins);
+                        
+                      }
+                }
+                if ( temphour > 24)
+                {
+                  temphour = temphour - 24;
+                  tempampm = "am";
+                }
+                else if ( temphour > 12)
+                {
+                  temphour = temphour - 12;
+                  tempampm = "pm";
+                }
+                else {
+                  tempampm = "am";
+                }
+                console.log(temphour+":"+tempmins+tempampm);
+              return(temphour+":"+tempmins+tempampm);
+        }
 // for delete button
 
   $(".delete-button").on("click",function()
@@ -171,13 +221,14 @@ function nxttrain(hours,mins,freq)
               var tfreq = snapshot.val().frequency;
               var tkey = snapshot.val().key;
               console.log('key',tkey);
-              var str = nxttrain();
+              var str = nxttrain(10,20,'am',30);
+            //  var str = nxttrain(ttimehour,ttimeminu,ttimeampm,tfreq);
               var insertstr =
               `<tr uid = 'row${gl_counter}' class = "tr_rec"'><td  class = 'row${gl_counter}'>${tname}
               </td><td  uid = 'row${gl_counter}'>${tdest}
               </td><td uid = 'row${gl_counter}'>${ttime}
               </td><td uid = 'row${gl_counter}'>${tfreq}
-              </td><td  uid = 'row${gl_counter}'>${tfreq}
+              </td><td  uid = 'row${gl_counter}'>${str}
               </td><td><button uid = 'row${gl_counter}'  class = "btn btn-warning btn-md" class = "update-button">Update</button>
               </td><td><button uid = 'row${gl_counter}' class = "btn btn-danger btn-md" class = "delete-button">Delete</button>
               </td></tr>`;
