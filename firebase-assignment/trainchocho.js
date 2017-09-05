@@ -9,18 +9,7 @@ console.log('inside javascript');
         var gl_freq = "10";
         var gl_mins = "15";
 
-//input validation
-        function inputvalidation()
-        {
-          var tname = $("#input-train-name").val().trim();
-          var tdest = $("#input-destination").val().trim();
-          var ttime = $("#input-train-time-hours").value;
-          var ttimemin = $("#input-train-time-minutes").val().trim();
-          var ampm = $("#ampm").value;
-          var tfreq = $("#input-train-frequency").value;
-          moment(ttime).format("LLLL");
-          moment().isValid();
-        }
+
 //Clear field value
   function clearall()
     {
@@ -61,7 +50,7 @@ console.log('inside javascript');
             getit = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
             console.log('this is string',str);
             $("#disp-next-train").val(str[0]);
-            $("disp-mins-away").val(str[1]);
+            $("#disp-mins-away").val(str[1]);
   });
 // changes in inpu
 $("#input-train-frequency").on("change",function()
@@ -101,13 +90,12 @@ $("#input-train-time-minutes").on("change",function(){
 });
 
 // next train
-function nxttrain(hours,mins,ampm,freq)
+function nxttrain(hours,mins,freq)
 {
 
               console.log('parameter hour',hours);
                console.log('parameter mins',mins);
-                console.log('parameter ampm',ampm);
-                 console.log('parameter freqr',freq);
+               console.log('parameter freqr',freq);
               //now values
 
                 var now =  parseInt(moment().format('LLLL'));
@@ -124,31 +112,23 @@ function nxttrain(hours,mins,ampm,freq)
                  console.log('Now secs',vsecond)  ;
                  console.log('Now year',vyear)  ;
 
-              //rows - data values
-
-                var stmins = mins;
-                var sthours = hours;
-                var stampm = ampm;
-
-
                 //counting
                 var temphour = parseInt(hours);
                 var tempmins = parseInt(mins);
-                var tempampm = parseInt(ampm);
                 var tmintoadd = parseInt(freq);
 
-                        if (tempampm === "pm")
+                if( temphour > vhour) // if the first train of the day is after the current time
+                {
+                      var stmins = parseInt(mins);
+                      var sthours = parseInt(hours);
+                }
+                else
+                {
+                       var stmins = 00;
+                       var sthours = 00;
+                        while((temphour <= vhour) ||  ((temphour === vhour) && (tempmins < vminute)) )
                         {
-                          temphour = temphour+12;
-                          console.log('Hour is if',temphour);
-
-                        }
-                        else
-                        {
-                          console.log('Hour is',temphour);
-                        }
-                        while((temphour <= vhour) )
-                        {
+                          //
                               console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
 
                               tempmins = tempmins + tmintoadd;
@@ -166,35 +146,32 @@ function nxttrain(hours,mins,ampm,freq)
                                 tempmins = 00;
                                 //console.log('else part time :'+temphour+":"+tempmins);
                               }
-                              if(temphour <= vhour)
+                              if ((temphour <= vhour) || ((temphour === vhour) && (tempmins < vmins)))
                               {
-                                stmins = tempmins;
-                                sthours = temphour;
+                                stmins = parseInt(tempmins);
+                                sthours = parseInt(temphour);
 
                               }
                          }//end of while
+                  } // end of else part
+                         var stampm = "";
+                         if ( sthours > 24)
+                         {
+                           sthours = sthours - 24;
+                           stampm = "am";
+                         }
+                         else if ( sthours > 12)
+                         {
+                           sthours = sthours - 12;
+                           stampm = "pm";
+                         }
+                         else {
+                           stampm = "am";
+                         }
 
-                            if ( sthours > 24)
-                            {
-                              sthours = sthours - 24;
-                              stampm = "am";
-                            }
-                            else if ( sthours > 12)
-                            {
-                              sthours = sthours - 12;
-                              stampm = "pm";
-                            }
-                            else {
-                              stampm = "am";
-                            }
-                          console.log('stamapm - display before mins away calcultation',stampm)  ;
                         //Mins away section
                         var calminsaway = 0;
                         //vhour = parseInt(vhour);
-                        sthours = parseInt(sthours);
-                        stmins = parseInt(stmins);
-                        vminute = parseInt(vminute);
-
                         console.log('vhours',vhour);
                         console.log('vminute',vminute);
                         console.log('stmins',stmins);
@@ -220,7 +197,7 @@ function nxttrain(hours,mins,ampm,freq)
                               else {
                                  calminsaway = vminute + (60- stmins);
                                   calminsaway = calminsaway + (((sthours - vhour) - 1)*60)
-                                   console.log('mins away bottom else',calminsaway);
+                                console.log('mins away bottom else',calminsaway);
                               }
                         }
 
@@ -243,7 +220,7 @@ function nxttrain(hours,mins,ampm,freq)
           var destination = $("#input-destination").val().trim();
           var firsttrainhour = gl_hours;
           var firsttrainmin = gl_mins;
-          var firsttrainampm = gl_ampm;
+          var firsttrainampm = "";
           var tfreq = gl_freq ;
 
          database.ref().del({
@@ -267,7 +244,7 @@ function nxttrain(hours,mins,ampm,freq)
 //Child add - does not give key - display all rows from the database
 
   database.ref().on("child_added",function(snapshot)
-            {
+  {
               console.log('Inside database ref call');
               console.log(snapshot.val());
               gl_counter++ ;
@@ -277,16 +254,16 @@ function nxttrain(hours,mins,ampm,freq)
               var tdest = snapshot.val().traindestination;
               var ttimehour = snapshot.val().firsttrainhour;
               var ttimeminu = snapshot.val().firsttrainmin;
-              var ttimeampm = snapshot.val().firsttrainampm;
-              var ttime = ttimehour +":"+ttimeminu +":"+ttimeampm ;
+
+              var ttime = ttimehour +":"+ttimeminu ;
               var tfreq = snapshot.val().frequency;
               var tkey = snapshot.val().key;
               console.log('key',tkey);
               var str = [];
               //var str = nxttrain(10,20,'am',30);
-              str = nxttrain(ttimehour,ttimeminu,ttimeampm,tfreq);
+              str = nxttrain(ttimehour,ttimeminu,tfreq);
               var insertstr =
-              `<tr uid = 'row${gl_counter}' class = "tr_rec"'><td  class = 'row${gl_counter}'>${tname}
+               `<tr uid = 'row${gl_counter}' class = "tr_rec"'><td  class = 'row${gl_counter}'>${tname}
               </td><td  uid = 'row${gl_counter}'>${tdest}
               </td><td uid = 'row${gl_counter}'>${ttime}
               </td><td uid = 'row${gl_counter}'>${tfreq}
@@ -338,3 +315,15 @@ function nxttrain(hours,mins,ampm,freq)
                                   $("#listoftrainschedule").append(insertstr);
                           }
                         });*/
+                        //input validation
+                            /*    function inputvalidation()
+                                {
+                                  var tname = $("#input-train-name").val().trim();
+                                  var tdest = $("#input-destination").val().trim();
+                                  var ttime = $("#input-train-time-hours").value;
+                                  var ttimemin = $("#input-train-time-minutes").val().trim();
+                                  var ampm = $("#ampm").value;
+                                  var tfreq = $("#input-train-frequency").value;
+                                  moment(ttime).format("LLLL");
+                                  moment().isValid();
+                                }*/

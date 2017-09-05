@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+            <meta charset="utf-8">
+            <title>Firebase - Assignment</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+            <!-- Firebase Reference -->
+            <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+            <!-- Moment.js Reference -->
+            <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
+            <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+            <!-- Custom CSS style -->
+            <link rel = "stylesheet" href="styleinfo.css" type="text/css" />
+  </head>
+  <body>
+    <div class ="jumbotron">
+       <h1>Train Schedule</h1>
+       <h4>Firebase Assignment</h4>
+       <h6><a href = "../index.html">Return to Assignments Menu</a></h6>
+    </div>
+    <div class = "container">
+            <div class = "panel-heading">
+              <h3 id="ts" >Train Schedule</h3>
+           </div>
+           <div class = "panel-body">
+                  <table class = "table table-hover">
+                       <thead>
+                           <tr>
+                                <th>Train Name</th>
+                                <th>Destination</th>
+                                <th>First Train</th>
+                                <th>Frequency</th>
+                                <th>Next Train</th>
+                                <th>Minutes Away</th>
+                           </tr>
+                      </thead>
+                      <br /><br />
+                      <tbody id ="listoftrainschedule">
+
+                      </tbody>
+                   </table>
+           </div>
+   </div>
+
+    <div class = "panel panel-default">
+          <div class = "panel-heading">
+             <h3>Add Train Details</h3>
+          </div>
+
+          <div class = "panel-body">
+            <form id = "enterdetails">
+                <div  class = "form-group">
+                    <label>Train Name</label>
+                    <input type = "text" id = "input-train-name"><br /><br />
+                </div>
+                <div  class = "form-group">
+                    <label>Destination</label>
+                    <input type = "text" id = "input-destination"><br /><br />
+                </div>
+                <div class = "form-group">
+                      <label>First Train</label>
+                </div>
+                <div  class = "row">
+                     <div class = "col col-md-2">
+                          <label>Hours</label>
+                          <select id = "input-train-time-hours" value = selected>
+                               <option value = "1">1</option>
+                              <option value = "2">2</option>
+                              <option value = "3">3</option>
+                              <option value = "4">4</option>
+                              <option value  = "5" selected >5</option>
+                              <option value = "6">6</option>
+                              <option value = "7">7</option>
+                              <option value = "8">8</option>
+                              <option value = "9">9</option>
+                              <option value = "10">10</option>
+                              <option value = "11">11</option>
+                              <option value = "12">12</option>
+                              <option value = "13">13</option>
+                             <option value = "14">14</option>
+                             <option value = "15">15</option>
+                             <option value = "16">16</option>
+                             <option value  = "17">17</option>
+                             <option value = "18">18</option>
+                             <option value = "19">19</option>
+                             <option value = "20">20</option>
+                             <option value = "21">21</option>
+                             <option value = "22">22</option>
+                             <option value = "23">23</option>
+                             <option value = "24">24</option>
+                         </select>
+                    </div>
+
+                    <div class = "col col-md-2">
+                        <label>Minutes</label>
+
+                        <select id = "input-train-time-minutes" value = selected>
+                             <option value = "5">5</option>
+                            <option value = "10">10</option>
+                            <option value = "15" selected>15</option>
+                            <option value = "20">20</option>
+                            <option value = "25">25</option>
+                            <option value = "30">30</option>
+                            <option value = "35">35</option>
+                            <option value = "40">40</option>
+                            <option value = "45">45</option>
+                            <option value = "50">50</option>
+                            <option value = "55">55</option>
+                       </select>
+                     </div>
+                  <!--   <div class = "col col-md-2">
+                          <select id = "ampm" value = selected>
+                             <option value ="am" selected>AM</option>
+                             <option value ="pm">PM</option>
+                          </select>
+                      </div> -->
+                      <div class = "col col-md-2">
+                              <div  class = "form-group">
+                                  <label>Frequency</label>
+                                  <select id = "input-train-frequency" value = selected>
+                                       <option value = "5">5</option>
+                                      <option value = "10" selected>10</option>
+                                      <option value = "15">15</option>
+                                      <option value = "20">20</option>
+                                      <option value = "25">25</option>
+                                      <option value = "30">30</option>
+                                      <option value = "35">35</option>
+                                      <option value = "40">40</option>
+                                      <option value = "45">45</option>
+                                      <option value = "50">50</option>
+                                      <option value = "55">55</option>
+                                 </select>
+                              </div>
+                       </div>
+                    </div>
+                    <div class = "row">
+                              <div class = "col col-md-2" >
+                                       <button id="disp-calc" class = "btn btn-md ">Calculate</button>
+
+                              </div>
+                              <div class = "col col-md-2" >
+                                      <div class = "form-group">
+                                           <label>Next Train</label>
+                                           <input type ="text" id="disp-next-train" disabled><br><br />
+                                      </div>
+                              </div>
+                              <div class = "col col-md-2" >
+                                      <div class = "form-group">
+                                           <label>Minutes Away</label>
+                                           <input type ="text" id="disp-mins-away" disabled><br><br />
+                                      </div>
+                              </div>
+                     </div>
+
+                <button id = "submit-button" class = "btn btn-large btn-primary">Submit Train Details</button>
+            </form>
+          </div>
+    </div>
+
+     <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBAaoXjxqfvRp_PsHKL8W6UvAd_lyiJ81s",
+          authDomain: "traintimings-97e27.firebaseapp.com",
+          databaseURL: "https://traintimings-97e27.firebaseio.com",
+          projectId: "traintimings-97e27",
+          storageBucket: "traintimings-97e27.appspot.com",
+          messagingSenderId: "200037201060"
+        };
+        firebase.initializeApp(config);
+      </script>
+      <script type ="text/javascript" src ="./trainchocho.js"> </script>
+    <!--  <script type ="text/javascript" src ="./firebaselogicjs.js"> </script>-->
+  </body>
+</html>
