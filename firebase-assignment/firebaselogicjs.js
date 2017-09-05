@@ -137,19 +137,23 @@ function nxttrain(hours,mins,ampm,freq)
                 var tempampm = parseInt(ampm);
                 var tmintoadd = parseInt(freq);
 
-                if (tempampm === "pm")
-                {
-                  temphour = temphour+12;
-                  console.log('Hour is if',temphour);
+        /*  if ( temphour > vhour)
+          {
+                 sthours = temphour;
+                 stmins = tempmins ;
+          }
+          else
+           {*/
+                        if (tempampm === "pm")
+                        {
+                          temphour = temphour+12;
+                          console.log('Hour is if',temphour);
 
-                }
-                else
-                {
-                  console.log('Hour is',temphour);
-                }
-
-
-
+                        }
+                        else
+                        {
+                          console.log('Hour is',temphour);
+                        }
                         while((temphour <= vhour) )
                         {
                               console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
@@ -176,6 +180,7 @@ function nxttrain(hours,mins,ampm,freq)
 
                               }
                          }//end of while
+              /*   } */// end of if - when first train is after current time
                             if ( sthours > 24)
                             {
                               sthours = sthours - 24;
@@ -189,6 +194,7 @@ function nxttrain(hours,mins,ampm,freq)
                             else {
                               sthampm = "am";
                             }
+                          console.log('stamapm',stampm)  ;
                         //Mins away section
                         var calminsaway = 0;
                         vhour = parseInt(vhour);
@@ -199,21 +205,24 @@ function nxttrain(hours,mins,ampm,freq)
                         if (( vhour === sthours) && (stmins === vminute))
                         {
                           calminsaway = 0 ;
+                          console.log('mins away in if ',calminsaway);
                         }
                         else if (vhour === sthours)
                         {
                            calminsaway = stmins - vminute;
-
+                           console.log('mins away in else if',calminsaway);
                         }
                         else if (sthours > vhour)
                         {
                               if ((sthours - vhour) === 1)
                               {
                                  calminsaway = vminute + (60- stmins);
+                                   console.log('mins away if within else',calminsaway);
                               }
                               else {
                                  calminsaway = vminute + (60- stmins);
                                  calminsaway = calminsaway + (((sthours - vhour) - 1)*60)
+                                   console.log('mins away bottom else',calminsaway);
                               }
                         }
 
