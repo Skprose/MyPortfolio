@@ -22,8 +22,8 @@ console.log('inside javascript');
           moment().isValid();
         }
 //Clear field value
-        function clearall()
-        {
+  function clearall()
+    {
 
           $("#input-train-name").val("");
           $("#input-destination").val("");
@@ -32,10 +32,11 @@ console.log('inside javascript');
           $("#ampm").value = gl_ampm ;
           $("#input-train-frequency").value = gl_freq;
           $("#disp-next-train").val("");
-        }
+          $("#disp-mins-away").val("");
+    }
 // Adding Train Details
-        $("#submit-button").on("click",function()
-        {
+  $("#submit-button").on("click",function()
+  {
           event.preventDefault();
           var name = $("#input-train-name").val().trim();
           var destination = $("#input-destination").val().trim();
@@ -54,40 +55,49 @@ console.log('inside javascript');
               dateadded: firebase.database.ServerValue.TIMESTAMP
             });
             clearall();
-          });
+  });
+  $("#disp-calc").on("click",function(){
+            var getit = [];
+            getit = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+            console.log('this is string',str);
+            $("#disp-next-train").val(str[0]);
+            $("disp-mins-away").val(str[1]);
+  });
 // changes in inpu
 $("#input-train-frequency").on("change",function()
 {
-    console.log("inside input change");
-    gl_freq = this.value;
-      console.log('frequency'+gl_freq);
-    var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
-    console.log('this is string',str);
-    $("#disp-next-train").val(str);
+        console.log("inside input change");
+        gl_freq = this.value;
+        console.log('frequency'+gl_freq);
+        var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+        console.log('this is string',str);
+        $("#disp-next-train").val(str[0]);
+        $("disp-mins-away").val(str[1]);
 });
+
 $("#input-train-time-hours").on("change",function(){
-  gl_hours = this.value;
-  console.log('gl hour'+gl_hours);
-  /*var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
-  console.log('this is string',str);
-  $("#disp-next-train").val(str);*/
+        gl_hours = this.value;
+        console.log('gl hour'+gl_hours);
+        /*var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+        console.log('this is string',str);
+        $("#disp-next-train").val(str);*/
 
 });
 
 $("#ampm").on("change",function(){
-  gl_ampm = this.value;
-  console.log("ampm"+gl_ampm);
-/*  var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
-  console.log('this is string',str);
-  $("#disp-next-train").val(str);*/
+          gl_ampm = this.value;
+          console.log("ampm"+gl_ampm);
+        /*  var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+          console.log('this is string',str);
+          $("#disp-next-train").val(str);*/
 });
 
 $("#input-train-time-minutes").on("change",function(){
-  gl_mins = this.value;
-  console.log('gl mins'+gl_mins);
-  /*var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
-  console.log('this is string',str);
-  $("#disp-next-train").val(str);*/
+          gl_mins = this.value;
+          console.log('gl mins'+gl_mins);
+          /*var str = nxttrain(gl_hours,gl_mins,gl_ampm,gl_freq);
+          console.log('this is string',str);
+          $("#disp-next-train").val(str);*/
 });
 
 // next train
@@ -103,9 +113,10 @@ function nxttrain(hours,mins,ampm,freq)
                 var now =  parseInt(moment().format('LLLL'));
                 var vyear = parseInt(moment().get('year'));
                 var vdate = parseInt(moment().get('date'));
-                var vhour = parseInt(moment().get('hour'));
+                 var vhour = parseInt(moment().get('hour'));
                 var vminute = parseInt(moment().get('minute'));
                 var vsecond = parseInt(moment().get('second'));
+
                  console.log('Now year',vyear)  ;
                  console.log('Now date',vdate)  ;
                  console.log('Now hour',vhour)  ;
@@ -117,7 +128,7 @@ function nxttrain(hours,mins,ampm,freq)
 
                 var stmins = mins;
                 var sthours = hours;
-                var tampm = ampm;
+                var stampm = ampm;
 
 
                 //counting
@@ -125,6 +136,7 @@ function nxttrain(hours,mins,ampm,freq)
                 var tempmins = parseInt(mins);
                 var tempampm = parseInt(ampm);
                 var tmintoadd = parseInt(freq);
+
                 if (tempampm === "pm")
                 {
                   temphour = temphour+12;
@@ -138,43 +150,83 @@ function nxttrain(hours,mins,ampm,freq)
 
 
 
-                while((temphour <= vhour) )
-                {
-                      console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
+                        while((temphour <= vhour) )
+                        {
+                              console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
 
-                      tempmins = tempmins + tmintoadd;
-                      console.log('minutes addition'+tempmins+':::'+tmintoadd);
+                              tempmins = tempmins + tmintoadd;
+                              console.log('minutes addition'+tempmins+':::'+tmintoadd);
 
-                      if ( tempmins > 59)
-                      {
-                        temphour++;
-                        tempmins = tempmins - 60;
-                        console.log('if part time :'+temphour+":"+tempmins);
-                      }
-                      else if(tempmins === 60)
-                      {
-                        temphour++
-                        tempmins = 00;
-                        console.log('else part time :'+temphour+":"+tempmins);
-                        
-                      }
-                }
-                if ( temphour > 24)
-                {
-                  temphour = temphour - 24;
-                  tempampm = "am";
-                }
-                else if ( temphour > 12)
-                {
-                  temphour = temphour - 12;
-                  tempampm = "pm";
-                }
-                else {
-                  tempampm = "am";
-                }
-                console.log(temphour+":"+tempmins+tempampm);
-              return(temphour+":"+tempmins+tempampm);
-        }
+                              if ( tempmins > 59)
+                              {
+                                temphour++;
+                                tempmins = tempmins - 60;
+                                console.log('if part time :'+temphour+":"+tempmins);
+                              }
+                              else if(tempmins === 60)
+                              {
+                                temphour++
+                                tempmins = 00;
+                                console.log('else part time :'+temphour+":"+tempmins);
+                              }
+                              if(temphour <= vhour)
+                              {
+                                stmins = tempmins;
+                                sthours = temphour;
+
+                              }
+                         }//end of while
+                            if ( sthours > 24)
+                            {
+                              sthours = sthours - 24;
+                              stampm = "am";
+                            }
+                            else if ( sthours > 12)
+                            {
+                              sthours = sthours - 12;
+                              stampm = "pm";
+                            }
+                            else {
+                              sthampm = "am";
+                            }
+                        //Mins away section
+                        var calminsaway = 0;
+                        vhour = parseInt(vhour);
+                        sthours = parseInt(sthours);
+                        stmins = parseInt(stmins);
+                        vminute = parseInt(vminute);
+
+                        if (( vhour === sthours) && (stmins === vminute))
+                        {
+                          calminsaway = 0 ;
+                        }
+                        else if (vhour === sthours)
+                        {
+                           calminsaway = stmins - vminute;
+
+                        }
+                        else if (sthours > vhour)
+                        {
+                              if ((sthours - vhour) === 1)
+                              {
+                                 calminsaway = vminute + (60- stmins);
+                              }
+                              else {
+                                 calminsaway = vminute + (60- stmins);
+                                 calminsaway = calminsaway + (((sthours - vhour) - 1)*60)
+                              }
+                        }
+
+                        var results = [];
+                        results[0] = sthours+":"+stmins+" "+stampm ;
+                        results[1] = calminsaway;
+                        console.log(sthours+":"+stmins+" "+stampm+"mis way"+calminsaway);
+                      return(results);
+  } // end of function nxttrain
+
+
+
+
 // for delete button
 
   $(".delete-button").on("click",function()
@@ -204,8 +256,10 @@ function nxttrain(hours,mins,ampm,freq)
 
    });
 
+
 //Child add - does not give key - display all rows from the database
-          database.ref().on("child_added",function(snapshot)
+
+  database.ref().on("child_added",function(snapshot)
             {
               console.log('Inside database ref call');
               console.log(snapshot.val());
@@ -221,20 +275,22 @@ function nxttrain(hours,mins,ampm,freq)
               var tfreq = snapshot.val().frequency;
               var tkey = snapshot.val().key;
               console.log('key',tkey);
-              var str = nxttrain(10,20,'am',30);
-            //  var str = nxttrain(ttimehour,ttimeminu,ttimeampm,tfreq);
+              var str = [];
+              //var str = nxttrain(10,20,'am',30);
+              str = nxttrain(ttimehour,ttimeminu,ttimeampm,tfreq);
               var insertstr =
               `<tr uid = 'row${gl_counter}' class = "tr_rec"'><td  class = 'row${gl_counter}'>${tname}
               </td><td  uid = 'row${gl_counter}'>${tdest}
               </td><td uid = 'row${gl_counter}'>${ttime}
               </td><td uid = 'row${gl_counter}'>${tfreq}
-              </td><td  uid = 'row${gl_counter}'>${str}
+              </td><td  uid = 'row${gl_counter}'>${str[0]}
+              </td><td  uid = 'row${gl_counter}'>${str[1]}
               </td><td><button uid = 'row${gl_counter}'  class = "btn btn-warning btn-md" class = "update-button">Update</button>
               </td><td><button uid = 'row${gl_counter}' class = "btn btn-danger btn-md" class = "delete-button">Delete</button>
               </td></tr>`;
-              console.log('e adding item is insertstr',insertstr);
+              console.log('adding item is insertstr',insertstr);
               $("#listoftrainschedule").append(insertstr);
-            });
+    });
 
 //Child deleted
             /* database.ref().on("child_removed",function(snapshot)

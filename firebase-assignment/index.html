@@ -34,6 +34,7 @@
                                 <th>Destination</th>
                                 <th>First Train</th>
                                 <th>Frequency</th>
+                                <th>Minutes Away</th>
                                 <th>Next Train</th>
                            </tr>
                       </thead>
@@ -122,14 +123,28 @@
                                       <option value = "55">55</option>
                                  </select>
                               </div>
-                      </div>
-                      <div class = "col col-md-2" >
-                              <div class = "form-group">
-                                   <label>Next Train</label>
-                                   <input type ="text" id="disp-next-train" disabled><br><br />
+                       </div>
+                    </div>
+                    <div class = "row">
+                              <div class = "col col-md-2" >
+                                      <div class = "form-group">
+                                           <label>Calculate</label>
+                                           <input type ="text" id="disp-calc" disabled><br><br />
+                                      </div>
                               </div>
-                      </div>
-                </div>
+                              <div class = "col col-md-2" >
+                                      <div class = "form-group">
+                                           <label>Next Train</label>
+                                           <input type ="text" id="disp-next-train" disabled><br><br />
+                                      </div>
+                              </div>
+                              <div class = "col col-md-2" >
+                                      <div class = "form-group">
+                                           <label>Minutes Away</label>
+                                           <input type ="text" id="disp-mins-away" disabled><br><br />
+                                      </div>
+                              </div>
+                     </div>
 
                 <button id = "submit-button" class = "btn btn-large btn-info">Submit Train Details</button>
             </form>
