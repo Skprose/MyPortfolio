@@ -117,6 +117,7 @@ function nxttrain(hours,mins,freq)
                 var tempmins = parseInt(mins);
                 var tmintoadd = parseInt(freq);
 
+
                 if( temphour > vhour) // if the first train of the day is after the current time
                 {
                       var stmins = parseInt(mins);
@@ -126,80 +127,66 @@ function nxttrain(hours,mins,freq)
                 {
                        var stmins = 00;
                        var sthours = 00;
-                        while((temphour <= vhour) ||  ((temphour === vhour) && (tempmins < vminute)) )
-                        {
-                          //
-                              console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
+                            console.log('temphour : tempmins',temphour,tempmins);
+                           console.log('vhour:vminute',vhour+':'+vminute);
+                           var t1 = moment('vhour:vminute',"HH:mm");
+                           var t2 = moment('temphour:tempmins','HH:mm')
+                           var t3 =  t1.diff(t2,"minute");
+                           console.log('the diff is', t3 ) ;
+                       while ((moment('vhour:vminute',"HH:mm").diff(moment('temphour:tempmins','HH:mm'),"minute")) > 0)
+                       {
+                                   tempmin = tempmin + tmintoadd ;
 
-                              tempmins = tempmins + tmintoadd;
-                              //console.log('minutes addition'+tempmins+':::'+tmintoadd);
+                                   console.log('temphour : tempmins',temphour+':'+tempmins);
+                                  console.log('vhour:vminute',vhour+':'+vminute);
+                                  if ( tempmins > 59)
+                                  {
+                                    temphour++;
+                                    tempmins = tempmins - 60;
+                                    //console.log('if part time :'+temphour+":"+tempmins);
+                                  }
+                                  else if(tempmins === 60)
+                                  {
+                                    temphour++
+                                    tempmins = 00;
+                                    //console.log('else part time :'+temphour+":"+tempmins);
+                                  }
+                          }
+                                    stmins = tempmins;
+                                    sthours = temphour;
+                  }
+                  var calminsaway = 0;
 
-                              if ( tempmins > 59)
-                              {
-                                temphour++;
-                                tempmins = tempmins - 60;
-                                //console.log('if part time :'+temphour+":"+tempmins);
-                              }
-                              else if(tempmins === 60)
-                              {
-                                temphour++
-                                tempmins = 00;
-                                //console.log('else part time :'+temphour+":"+tempmins);
-                              }
-                              if ((temphour <= vhour) || ((temphour === vhour) && (tempmins < vmins)))
-                              {
-                                stmins = parseInt(tempmins);
-                                sthours = parseInt(temphour);
+                  calminsaway =  moment('sthours:stmins','HH:mm').diff(moment('vhour:vminute','HH:mm'),"minute");
 
-                              }
-                         }//end of while
-                  } // end of else part
+
+
+                  // the following code for 12/24 check - adding am/pm
                          var stampm = "";
                          if ( sthours > 24)
                          {
                            sthours = sthours - 24;
                            stampm = "am";
+                           gl_ampm = "am";
                          }
                          else if ( sthours > 12)
                          {
                            sthours = sthours - 12;
                            stampm = "pm";
+                           gl_ampm = "pm";
                          }
                          else {
                            stampm = "am";
+                           gl_ampm = "am";
                          }
 
                         //Mins away section
-                        var calminsaway = 0;
                         //vhour = parseInt(vhour);
                         console.log('vhours',vhour);
                         console.log('vminute',vminute);
                         console.log('stmins',stmins);
                         console.log('sthours',sthours);
-
-                        if (( vhour === sthours) && (stmins === vminute))
-                        {
-                          calminsaway = 0 ;
-                          console.log('mins away in if ',calminsaway);
-                        }
-                        else if (vhour === sthours)
-                        {
-                           calminsaway = stmins - vminute;
-                           console.log('mins away in else if',calminsaway);
-                        }
-                        else if (sthours > vhour)
-                        {
-                              if ((sthours - vhour) === 1)
-                              {
-                                 calminsaway = vminute + (60- stmins);
-                                   console.log('mins away if within else',calminsaway);
-                              }
-                              else {
-                                 calminsaway = vminute + (60- stmins);
-                                  calminsaway = calminsaway + (((sthours - vhour) - 1)*60)
-                                console.log('mins away bottom else',calminsaway);
-                              }
-                        }
+                        console.log('mins away',calminsaway);
 
                         var results = [];
                         results[0] = sthours+":"+stmins+" "+stampm ;
@@ -237,6 +224,24 @@ function nxttrain(hours,mins,freq)
 
 
   $(".update-button").on("click",function(){
+              event.preventDefault();
+              var name = $("#input-train-name").val().trim();
+              var destination = $("#input-destination").val().trim();
+              var firsttrainhour = gl_hours;
+              var firsttrainmin = gl_mins;
+              var firsttrainampm = gl_ampm;
+              var tfreq = gl_freq ;
+              //add to database
+              database.ref().child('posts').push({
+                  trainname: name,
+                  traindestination: destination,
+                  firsttrainhour : firsttrainhour,
+                  firsttrainmin : firsttrainmin,
+                  firsttrainampm : firsttrainampm,
+                  frequency : tfreq,
+                  dateupdated: firebase.database.ServerValue.TIMESTAMP
+                }).key;
+                clearall();
 
    });
 

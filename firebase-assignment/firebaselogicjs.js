@@ -9,18 +9,6 @@ console.log('inside javascript');
         var gl_freq = "10";
         var gl_mins = "15";
 
-//input validation
-        function inputvalidation()
-        {
-          var tname = $("#input-train-name").val().trim();
-          var tdest = $("#input-destination").val().trim();
-          var ttime = $("#input-train-time-hours").value;
-          var ttimemin = $("#input-train-time-minutes").val().trim();
-          var ampm = $("#ampm").value;
-          var tfreq = $("#input-train-frequency").value;
-          moment(ttime).format("LLLL");
-          moment().isValid();
-        }
 //Clear field value
   function clearall()
     {
@@ -50,7 +38,6 @@ console.log('inside javascript');
               traindestination: destination,
               firsttrainhour : firsttrainhour,
               firsttrainmin : firsttrainmin,
-              firsttrainampm : firsttrainampm,
               frequency : tfreq,
               dateadded: firebase.database.ServerValue.TIMESTAMP
             });
@@ -101,134 +88,95 @@ $("#input-train-time-minutes").on("change",function(){
 });
 
 // next train
-function nxttrain(hours,mins,ampm,freq)
+function nxttrain(phours,pmins,pfreq)
 {
+                    var time1 =moment();
+                    var today_date = moment().get('date');
+                    var today_month = moment().get('month');
+                    var today_year = moment().get('year');
+                    var today_hours = moment().get('hours');
+                    var today_minute = moment().get('minute');
+                    var stmins;
+                    var sthours;
+                    var temphour = parseInt(phours);
+                    var tempmins = parseInt(pmins);
+                    var tmintoadd = parseInt(pfreq);
+                    var away;
+                    var results ;
+                    var time2 = moment(new Date(today_year,today_month,today_date,temphour,tempmins,00));
+                    console.log('today hour : today minute',today_hours+" : "+today_minute);
+                   //  console.log('time 1 :',time1);
+                   //  console.log('time 2:',time2);
+                   //console.log('time 2.hour()',time2.hours());
+                   //  console.log('time add hours',time2.add(1,'hours'));
+                   if ( temphour > today_hours)
+                   {
+                     stmins = tempmins;
+                     sthours = temphour
+                     time2 = moment(new Date(today_year,today_month,today_date,sthours,stmins,00));
+                     away = moment(time2).diff(time1,"minute");
+                     results[0] = sthours+":"+stmins;
+                     results[1] = away;
+                     return(results);
+                   }
+                   else if (  (temphour === today_hours) && ( (tempmins+tmintoadd) < today_minute) )
+                   {
+                          tempmins = tempmins + tmintoadd;
+                          stmins = tempmins;
+                          sthours = temphour;
+                          away = stmins - today_minute;
+                          time2 = moment(new Date(today_year,today_month,today_date,sthours,stmins,00));
+                          results[0] = sthours+":"+stmins;
+                          results[1] = away;
+                          return(results);
+                   }
+                   if (temphour < today_hours)
+                   {
 
-              console.log('parameter hour',hours);
-               console.log('parameter mins',mins);
-                console.log('parameter ampm',ampm);
-                 console.log('parameter freqr',freq);
-              //now values
-
-                var now =  parseInt(moment().format('LLLL'));
-                var vyear = parseInt(moment().get('year'));
-                var vdate = parseInt(moment().get('date'));
-                 var vhour = parseInt(moment().get('hour'));
-                var vminute = parseInt(moment().get('minute'));
-                var vsecond = parseInt(moment().get('second'));
-
-                 console.log('Now year',vyear)  ;
-                 console.log('Now date',vdate)  ;
-                 console.log('Now hour',vhour)  ;
-                 console.log('Now mins',vminute)  ;
-                 console.log('Now secs',vsecond)  ;
-                 console.log('Now year',vyear)  ;
-
-              //rows - data values
-
-                var stmins = mins;
-                var sthours = hours;
-                var stampm = ampm;
-
-
-                //counting
-                var temphour = parseInt(hours);
-                var tempmins = parseInt(mins);
-                var tempampm = parseInt(ampm);
-                var tmintoadd = parseInt(freq);
-
-                        if (tempampm === "pm")
-                        {
-                          temphour = temphour+12;
-                          console.log('Hour is if',temphour);
-
-                        }
-                        else
-                        {
-                          console.log('Hour is',temphour);
-                        }
-                        while((temphour <= vhour) )
-                        {
-                              console.log('In While :'+'temphout '+ temphour + 'tempmins'+tempmins);
-
-                              tempmins = tempmins + tmintoadd;
-                              //console.log('minutes addition'+tempmins+':::'+tmintoadd);
-
-                              if ( tempmins > 59)
+                              while ((temphour < today_hours))
                               {
-                                temphour++;
-                                tempmins = tempmins - 60;
-                                //console.log('if part time :'+temphour+":"+tempmins);
+
+                                 console.log('time2 in loop');
+
+                                 console.log('In While :'+'temphour '+ temphour + 'tempmins'+tempmins);
+
+                                 tempmins = tempmins + tmintoadd;
+                                 //console.log('minutes addition'+tempmins+':::'+tmintoadd);
+
+                                 if ( tempmins > 59)
+                                 {
+                                   temphour++;
+                                   tempmins = tempmins - 60;
+                                   //console.log('if part time :'+temphour+":"+tempmins);
+                                 }
+                                 else if(tempmins === 60)
+                                 {
+                                   temphour++
+                                   tempmins = 00;
+                                   //console.log('else part time :'+temphour+":"+tempmins);
+                                 }
+
+                                 if(temphour <= today_hours)
+                                 {
+                                    stmins = tempmins;
+                                    sthours = temphour;
+                                 }
+                                 console.log('stmins and sthours : '+stmins+" : "+sthours);
+                                 time2 = moment(new Date(today_year,today_month,today_date,sthours,stmins,00));
+                                 away = moment(time2).diff(time1,"minute");
+                                 results[0] = sthours+":"+stmins;
+                                 results[1] = away;
+                                 return(results);
                               }
-                              else if(tempmins === 60)
-                              {
-                                temphour++
-                                tempmins = 00;
-                                //console.log('else part time :'+temphour+":"+tempmins);
-                              }
-                              if(temphour <= vhour)
-                              {
-                                stmins = tempmins;
-                                sthours = temphour;
+                       }
 
-                              }
-                         }//end of while
-
-                            if ( sthours > 24)
-                            {
-                              sthours = sthours - 24;
-                              stampm = "am";
-                            }
-                            else if ( sthours > 12)
-                            {
-                              sthours = sthours - 12;
-                              stampm = "pm";
-                            }
-                            else {
-                              stampm = "am";
-                            }
-                          console.log('stamapm - display before mins away calcultation',stampm)  ;
-                        //Mins away section
-                        var calminsaway = 0;
-                        //vhour = parseInt(vhour);
-                        sthours = parseInt(sthours);
-                        stmins = parseInt(stmins);
-                        vminute = parseInt(vminute);
-
-                        console.log('vhours',vhour);
-                        console.log('vminute',vminute);
-                        console.log('stmins',stmins);
-                        console.log('sthours',sthours);
-
-                        if (( vhour === sthours) && (stmins === vminute))
+                       else if ((temphour === today_hours) && (tempmins > today_minute))
                         {
-                          calminsaway = 0 ;
-                          console.log('mins away in if ',calminsaway);
-                        }
-                        else if (vhour === sthours)
-                        {
-                           calminsaway = stmins - vminute;
-                           console.log('mins away in else if',calminsaway);
-                        }
-                        else if (sthours > vhour)
-                        {
-                              if ((sthours - vhour) === 1)
-                              {
-                                 calminsaway = vminute + (60- stmins);
-                                   console.log('mins away if within else',calminsaway);
-                              }
-                              else {
-                                 calminsaway = vminute + (60- stmins);
-                                  calminsaway = calminsaway + (((sthours - vhour) - 1)*60)
-                                   console.log('mins away bottom else',calminsaway);
-                              }
-                        }
-
-                        var results = [];
-                        results[0] = sthours+":"+stmins+" "+stampm ;
-                        results[1] = calminsaway;
-                        console.log(sthours+":"+stmins+" "+stampm+"mis way"+calminsaway);
-                      return(results);
+                          away = tempmins - today_minute;
+                          results[0] = sthours+" : "+stmins;
+                          results[1] = away;
+                          return(results);
+                       }
   } // end of function nxttrain
 
 
@@ -277,14 +225,14 @@ function nxttrain(hours,mins,ampm,freq)
               var tdest = snapshot.val().traindestination;
               var ttimehour = snapshot.val().firsttrainhour;
               var ttimeminu = snapshot.val().firsttrainmin;
-              var ttimeampm = snapshot.val().firsttrainampm;
-              var ttime = ttimehour +":"+ttimeminu +":"+ttimeampm ;
+
+              var ttime = ttimehour +":"+ttimeminu ;
               var tfreq = snapshot.val().frequency;
               var tkey = snapshot.val().key;
               console.log('key',tkey);
               var str = [];
               //var str = nxttrain(10,20,'am',30);
-              str = nxttrain(ttimehour,ttimeminu,ttimeampm,tfreq);
+              str = nxttrain(ttimehour,ttimeminu,tfreq);
               var insertstr =
               `<tr uid = 'row${gl_counter}' class = "tr_rec"'><td  class = 'row${gl_counter}'>${tname}
               </td><td  uid = 'row${gl_counter}'>${tdest}

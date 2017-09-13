@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- Link to Moment.js should go here -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  </head>
+  <body>
+    <script>
+    maincalnxttrain();
+
+    function maincalnxttrain()
+    {
+      var time1 = moment();
+      var today_date = moment().get('date');
+      var today_month = moment().get('month');
+      var today_year = moment().get('year');
+      var today_hours = moment().get('hours');
+      var today_minute = moment().get('minute');
+      var stmins;
+      var sthours;
+      var temphour = parseInt("2");
+      var tempmins = parseInt("30");
+      var tmintoadd = parseInt(40);
+      var time2 = moment(new Date(today_year,today_month,today_date,temphour,tempmins,00));
+      console.log('today hour : today minute',today_hours+" : "+today_minute);
+       if (( temphour < today_hours) || ( (temphour === today_hours) && (tempmins < today_minute)))
+       {
+
+           calnxttrainloop(temphour,tempmins,tmintoadd,today_hours,today_minute,today_date,today_month,today_year);
+       }
+       else if ((temphour > today_hours) || ((temphour === today_hours) && (tempmins > today_minute))) {
+               stmins = tempmins;
+               sthours = temphour;
+       }
+       console.log('Minutes away',moment(time2).diff(time1,"minute"));
+
+    }
+    function calnxttrainloop(temphour,tempmins,tmintoadd,today_hours,today_minute,today_date,today_month,today_year)
+      {
+             var stmins;
+             var sthours;
+
+
+                   while ((temphour < today_hours)||((temphour === today_hours) && (tempmins < today_minute)))
+                   {
+
+                      console.log('time2 in loop');
+
+                      console.log('In While :'+'temphour '+ temphour + 'tempmins'+tempmins);
+
+                      tempmins = tempmins + tmintoadd;
+                      //console.log('minutes addition'+tempmins+':::'+tmintoadd);
+
+                      if ( tempmins > 59)
+                      {
+                        temphour++;
+                        tempmins = tempmins - 60;
+                        //console.log('if part time :'+temphour+":"+tempmins);
+                      }
+                      else if(tempmins === 60)
+                      {
+                        temphour++
+                        tempmins = 00;
+                        //console.log('else part time :'+temphour+":"+tempmins);
+                      }
+
+                      if(temphour <= today_hours)
+                      {
+                         stmins = tempmins;
+                         sthours = temphour;
+                      }
+                      console.log('stmins ans sthours : '+stmins+" : "+sthours);                   
+                    }
+                      time2 = moment(new Date(today_year,today_month,today_date,sthours,stmins,00));
+          }
+
+    </script>
+  </body>
+</html>
