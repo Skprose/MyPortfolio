@@ -26,10 +26,7 @@ function getmusic()
 
         var spotify = require('node-spotify-api');
 
-        var myspotify = new spotify({
-          id:'b90fdab5d5e6450492107005d0a15337' ,
-          secret: '6e85c4889116480ea9ac113f975ce390',
-        });
+
         myspotify.search({type: 'track',query:'I Want it that way',limit:2},function(err,data){
            if(err)
            {
@@ -55,12 +52,6 @@ function getmusic()
 function getalltweets()
 {
       var Twitter = require('twitter');
-        var mytwitter = new Twitter({
-            consumer_key : 'PkFDY5GnPIjXUaK9lrbfywgjp',
-            consumer_secret : 'NgQP0ZRR50XFoQDOp8OJ0XEnk5PfZupjaB1TZqlrEdPQyfadDh',
-            access_token_key : '910975361038479360-U9ZTDYMkZyEWTvAnObCBKWNDAOGyQHB',
-            access_token_secret : 'eoiAJtJJsVJHDOv18yjfcosEgHjxce9NLco2P8frLGUCX'
-        });
 
         var params = {screen_name: 'nodejs'};
       mytwitter.get('statuses/user_timeline',  function(error, tweets, response) {
@@ -99,12 +90,6 @@ function getmoviereview()
 function gettweets()
 {
          var Twitter = require('twitter');
-          var mytwitter = new Twitter({
-              consumer_key : 'PkFDY5GnPIjXUaK9lrbfywgjp',
-              consumer_secret : 'NgQP0ZRR50XFoQDOp8OJ0XEnk5PfZupjaB1TZqlrEdPQyfadDh',
-              access_token_key : '910975361038479360-U9ZTDYMkZyEWTvAnObCBKWNDAOGyQHB',
-              access_token_secret : 'eoiAJtJJsVJHDOv18yjfcosEgHjxce9NLco2P8frLGUCX'
-          });
 
 
           var params = {screen_name: 'nodejs'};
